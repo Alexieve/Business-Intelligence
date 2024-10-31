@@ -1,8 +1,9 @@
 USE master
 GO
 
---DROP DATABASE AirPollution_Stage
---GO
+IF DB_ID('AirPollution_Stage') IS NOT NULL
+	DROP DATABASE AirPollution_Stage;
+GO
 
 CREATE DATABASE AirPollution_Stage
 GO
@@ -38,3 +39,4 @@ CREATE TABLE state_aqi(
 	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_state_aqi PRIMARY KEY	CLUSTERED(defining_site, date, defining_parameter)
  )
+
