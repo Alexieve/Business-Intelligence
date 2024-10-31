@@ -11,14 +11,14 @@ USE AirPollution_Stage
 GO
 
 CREATE TABLE uscounties(
-	county_fips char(5) NOT NULL,
+	county_fips varchar(10) NOT NULL,
 	county varchar(50) NOT NULL,
 	county_ascii varchar(50) NOT NULL,
 	county_full varchar(50) NOT NULL,
-	state_id char(5) NOT NULL,
+	state_id varchar(10) NOT NULL,
 	state_name varchar(50) NOT NULL,
-	lat FLOAT NOT NULL,
-	lng FLOAT NOT NULL,
+	lat float NOT NULL,
+	lng float NOT NULL,
 	population int NOT NULL,
 	CONSTRAINT PK_uscounties PRIMARY KEY CLUSTERED (county_fips)
 )
@@ -38,5 +38,3 @@ CREATE TABLE state_aqi(
 	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_state_aqi PRIMARY KEY	CLUSTERED(defining_site, date, defining_parameter)
  )
-
-
