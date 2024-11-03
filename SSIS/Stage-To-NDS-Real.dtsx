@@ -11,8 +11,8 @@
   DTS:LocaleID="4105"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="62"
-  DTS:VersionGUID="{E5223335-1902-4EAB-B749-C2B5BEF4DB02}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{B11ADA2A-6A49-45FD-81CC-8B2B8A6382D5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -64,6 +64,30 @@
           DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Stage-To-NDS-{82A4E15C-6163-432A-B758-346A2F8C7755}DESKTOP-7UFG86B.AirPollution_Stage1 1;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
+      DTS:ObjectName="DESKTOP-C7QTEP4.AirPollution_NDS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-C7QTEP4;Initial Catalog=AirPollution_NDS;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}DESKTOP-C7QTEP4.AirPollution_NDS 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3FB0EB68-B18F-4AA1-A9B8-3CFFAC6046B0}"
+      DTS:ObjectName="DESKTOP-C7QTEP4.AirPollution_Stage 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-C7QTEP4;Initial Catalog=AirPollution_Stage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3FB0EB68-B18F-4AA1-A9B8-3CFFAC6046B0}DESKTOP-C7QTEP4.AirPollution_Stage 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -80,7 +104,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="INSERT INTO AQI_Category_NDS (category_name, aqi_min_value, aqi_max_value, description, created_date, modified_date)&#xA;VALUES &#xA;    ('Good', 0, 50, 'Air quality is satisfactory, and air pollution poses little or no risk.', GETDATE(), GETDATE()),&#xA;    ('Moderate', 51, 100, 'Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.', GETDATE(), GETDATE()),&#xA;    ('Unhealthy for Sensitive Groups', 101, 150, 'Members of sensitive groups may experience health effects. The general public is less likely to be affected.', GETDATE(), GETDATE()),&#xA;    ('Unhealthy', 151, 200, 'Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.', GETDATE(), GETDATE()),&#xA;    ('Very Unhealthy', 201, 300, 'Health alert: The risk of health effects is increased for everyone.', GETDATE(), GETDATE()),&#xA;    ('Hazardous', 301, 500, 'Health warning of emergency conditions: everyone is more likely to be affected.', GETDATE(), GETDATE());&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -772,8 +796,8 @@ ON
               <connections>
                 <connection
                   refId="Package\stage to County_NDS\stage.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -998,8 +1022,8 @@ FROM state_NDS</property>
               <connections>
                 <connection
                   refId="Package\stage to County_NDS\Stage Join SK.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1130,8 +1154,8 @@ FROM state_NDS</property>
               <connections>
                 <connection
                   refId="Package\stage to County_NDS\State_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1378,8 +1402,8 @@ JOIN state_NDS s on c.state_code_SK = s.state_code_SK</property>
               <connections>
                 <connection
                   refId="Package\stage to Monitor_NDS\County_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1845,8 +1869,8 @@ JOIN state_NDS s on c.state_code_SK = s.state_code_SK</property>
               <connections>
                 <connection
                   refId="Package\stage to Monitor_NDS\Monitor_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1917,7 +1941,8 @@ JOIN state_NDS s on c.state_code_SK = s.state_code_SK</property>
                       name="monitor_SK" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\Monitor_NDS.Inputs[OLE DB Destination Input].ExternalColumns[date]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="10"
                       name="date" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\Monitor_NDS.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
@@ -2527,8 +2552,8 @@ FROM state_aqi</property>
               <connections>
                 <connection
                   refId="Package\stage to Monitor_NDS\stage.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2637,7 +2662,8 @@ FROM state_aqi</property>
                       name="aqi" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Output].ExternalColumns[date]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="10"
                       name="date" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Output].ExternalColumns[number_of_sites_reporting]"
@@ -2657,14 +2683,14 @@ FROM state_aqi</property>
                       name="site_number_str" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Output].ExternalColumns[created]"
-                      dataType="dbTimeStamp2"
-                      name="created"
-                      scale="7" />
+                      dataType="wstr"
+                      length="27"
+                      name="created" />
                     <externalMetadataColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Output].ExternalColumns[last_updated]"
-                      dataType="dbTimeStamp2"
-                      name="last_updated"
-                      scale="7" />
+                      dataType="wstr"
+                      length="27"
+                      name="last_updated" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2686,7 +2712,8 @@ FROM state_aqi</property>
                       name="aqi" />
                     <outputColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[date]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="10"
                       lineageId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[date]"
                       name="date" />
                     <outputColumn
@@ -2711,16 +2738,16 @@ FROM state_aqi</property>
                       name="county_code" />
                     <outputColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[created]"
-                      dataType="dbTimeStamp2"
+                      dataType="wstr"
+                      length="27"
                       lineageId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[created]"
-                      name="created"
-                      scale="7" />
+                      name="created" />
                     <outputColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[last_updated]"
-                      dataType="dbTimeStamp2"
+                      dataType="wstr"
+                      length="27"
                       lineageId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[last_updated]"
-                      name="last_updated"
-                      scale="7" />
+                      name="last_updated" />
                     <outputColumn
                       refId="Package\stage to Monitor_NDS\stage.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2939,8 +2966,8 @@ JOIN state_NDS s on c.state_code_SK = s.state_code_SK</property>
               <connections>
                 <connection
                   refId="Package\stage to Site_NDS\County_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3338,8 +3365,8 @@ JOIN state_NDS s on c.state_code_SK = s.state_code_SK</property>
               <connections>
                 <connection
                   refId="Package\stage to Site_NDS\Site_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 3]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3817,8 +3844,8 @@ FROM
               <connections>
                 <connection
                   refId="Package\stage to Site_NDS\stage.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4199,8 +4226,8 @@ ORDER BY s.state_code;</property>
               <connections>
                 <connection
                   refId="Package\stage to State_NDS\stage.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4361,8 +4388,8 @@ ORDER BY s.state_code;</property>
               <connections>
                 <connection
                   refId="Package\stage to State_NDS\State_NDS.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_NDS 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4501,7 +4528,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Good'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Good')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Good');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4518,7 +4545,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="  WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Hazardous'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Hazardous')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Hazardous');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4535,7 +4562,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Moderate'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Moderate')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Moderate');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4552,7 +4579,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="  WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Unhealthy'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Unhealthy')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Unhealthy');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4569,7 +4596,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Unhealthy for Sensitive Groups'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Unhealthy for Sensitive Groups')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Unhealthy for Sensitive Groups');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4586,7 +4613,7 @@ ORDER BY s.state_code;</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C3CA85EA-9A7D-46B4-BF52-3A27979CD735}"
+          SQLTask:Connection="{9D12B7E9-D8C9-46C8-913C-3D5A8D2359F2}"
           SQLTask:SqlStatementSource="  WITH CTE AS (&#xA;    SELECT category_SK &#xA;    FROM AQI_Category_NDS &#xA;    WHERE category_name = 'Very Unhealthy'&#xA;)&#xA;UPDATE Monitor_NDS&#xA;SET category_SK = (SELECT category_SK FROM CTE)&#xA;WHERE aqi &gt;= (SELECT aqi_min_value FROM AQI_Category_NDS WHERE category_name = 'Very Unhealthy')&#xA;  AND aqi &lt;= (SELECT aqi_max_value FROM AQI_Category_NDS WHERE category_name = 'Very Unhealthy');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -4686,9 +4713,17 @@ ORDER BY s.state_code;</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="188,41.6"
+          Id="Package\Insert Dataset Category"
+          TopLeft="92.5925875335566,118.444443620797" />
+        <NodeLayout
           Size="178.4,41.6"
           Id="Package\stage to County_NDS"
           TopLeft="431.666646359697,210.133332995839" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\stage to Monitor_NDS"
+          TopLeft="430.833309793639,397.799997233749" />
         <NodeLayout
           Size="164,41.6"
           Id="Package\stage to Site_NDS"
@@ -4697,6 +4732,30 @@ ORDER BY s.state_code;</property>
           Size="170.4,41.6"
           Id="Package\stage to State_NDS"
           TopLeft="430.833313071894,119.799999584158" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Update AQI category Good"
+          TopLeft="421.42854840273,475.923074315374" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Update AQI category Hazardous"
+          TopLeft="666.798905366655,143.22678103912" />
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\Update AQI category Moderate"
+          TopLeft="660.780197159658,475.604392870529" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Update AQI category Unhealthy"
+          TopLeft="664.021127740649,322.337890904714" />
+        <NodeLayout
+          Size="321.6,41.6"
+          Id="Package\Update AQI category Unhealthy for Sensitive Groups"
+          TopLeft="663.690439928029,399.856408884179" />
+        <NodeLayout
+          Size="248.8,41.6"
+          Id="Package\Update AQI category Very Unhealthy"
+          TopLeft="665.87297949132,229.893447103117" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="518.449979715795,161.399999584158">
@@ -4741,10 +4800,6 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\stage to Monitor_NDS"
-          TopLeft="430.833309793639,397.799997233749" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="519.533309657045,339.733331260151">
@@ -4767,10 +4822,6 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="203.2,41.6"
-          Id="Package\Update AQI category Good"
-          TopLeft="421.42854840273,475.923074315374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="522.130929098185,439.399997233749">
@@ -4793,26 +4844,6 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="221.6,41.6"
-          Id="Package\Update AQI category Moderate"
-          TopLeft="660.780197159658,475.604392870529" />
-        <NodeLayout
-          Size="321.6,41.6"
-          Id="Package\Update AQI category Unhealthy for Sensitive Groups"
-          TopLeft="663.690439928029,399.856408884179" />
-        <NodeLayout
-          Size="224.8,41.6"
-          Id="Package\Update AQI category Unhealthy"
-          TopLeft="664.021127740649,322.337890904714" />
-        <NodeLayout
-          Size="248.8,41.6"
-          Id="Package\Update AQI category Very Unhealthy"
-          TopLeft="665.87297949132,229.893447103117" />
-        <NodeLayout
-          Size="228,41.6"
-          Id="Package\Update AQI category Hazardous"
-          TopLeft="666.798905366655,143.22678103912" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="624.628548402731,496.563733592952">
@@ -4971,10 +5002,6 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\Insert Dataset Category"
-          TopLeft="92.5925875335566,118.444443620797" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
           TopLeft="280.592587533557,139.922221602477">
@@ -5251,44 +5278,313 @@ ORDER BY s.state_code;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\stage to Monitor_NDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\stage to Monitor_NDS\Sort"
+          TopLeft="206.99999691546,131.999998033047" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\stage to Monitor_NDS\Data Conversion"
+          TopLeft="179.999997317791,53.9999991953373" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\stage to Monitor_NDS\Sort 1"
+          TopLeft="510.999992385507,131.999998033047" />
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\stage to Monitor_NDS\Monitor_NDS"
+          TopLeft="370.999994471669,296.866666999989" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\stage to Monitor_NDS\Merge Join"
+          TopLeft="356.999994680286,204.999996945262" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\stage to Monitor_NDS\County_NDS"
+          TopLeft="486.166660051379,53.1999991452694" />
+        <NodeLayout
+          Size="104,41.6"
+          Id="Package\stage to Monitor_NDS\stage"
+          TopLeft="25.6666624430155,52.0666664555999" />
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[Sort Output1]"
+          TopLeft="564.199992385507,173.599998033047">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-122.133331038555,31.3999989122153"
+              Start="0,0"
+              End="-122.133331038555,23.8999989122153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6102432577276" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6102432577276"
+                    Point2="0,18.6102432577276"
+                    Point3="-4,18.6102432577276" />
+                  <mssgle:LineSegment
+                    End="-118.133331038555,18.6102432577276" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-118.133331038555,18.6102432577276"
+                    Point2="-122.133331038555,18.6102432577276"
+                    Point3="-122.133331038555,22.6102432577276" />
+                  <mssgle:LineSegment
+                    End="-122.133331038555,23.8999989122153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[Sort Output]"
+          TopLeft="255.79999691546,173.599998033047">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="165.999997764826,31.3999989122153"
+              Start="0,0"
+              End="165.999997764826,23.8999989122153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.6999994561076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.6999994561076"
+                    Point2="0,15.6999994561076"
+                    Point3="4,15.6999994561076" />
+                  <mssgle:LineSegment
+                    End="161.999997764826,15.6999994561076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="161.999997764826,15.6999994561076"
+                    Point2="165.999997764826,15.6999994561076"
+                    Point3="165.999997764826,19.6999994561076" />
+                  <mssgle:LineSegment
+                    End="165.999997764826,23.8999989122153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[OLE DB Source Output1]"
+          TopLeft="555.766660051379,94.7999991452694">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.43333233412795,37.1999988877773"
+              Start="0,0"
+              End="8.43333233412795,29.6999988877773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5999994438887" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5999994438887"
+                    Point2="0,18.5999994438887"
+                    Point3="4,18.5999994438887" />
+                  <mssgle:LineSegment
+                    End="4.43333233412795,18.5999994438887" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.43333233412795,18.5999994438887"
+                    Point2="8.43333233412795,18.5999994438887"
+                    Point3="8.43333233412795,22.5999994438887" />
+                  <mssgle:LineSegment
+                    End="8.43333233412795,29.6999988877773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[OLE DB Source Output]"
+          TopLeft="129.666662443016,73.8333328254686">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.3333348747755,0"
+              Start="0,0"
+              End="42.8333348747755,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.8333348747755,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[Merge Join Output]"
+          TopLeft="421.799994680286,246.599996945262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.599999791383,50.2666700547273"
+              Start="0,0"
+              End="19.599999791383,42.7666700547273">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1333350273637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1333350273637"
+                    Point2="0,25.1333350273637"
+                    Point3="4,25.1333350273637" />
+                  <mssgle:LineSegment
+                    End="15.599999791383,25.1333350273637" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.599999791383,25.1333350273637"
+                    Point2="19.599999791383,25.1333350273637"
+                    Point3="19.599999791383,29.1333350273637" />
+                  <mssgle:LineSegment
+                    End="19.599999791383,42.7666700547273" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Monitor_NDS.Paths[Data Conversion Output]"
+          TopLeft="256.899997116625,95.5999991953373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.3999988377094"
+              Start="0,0"
+              End="0,28.8999988377094">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8999988377094" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\stage to Monitor_NDS\Monitor_NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stage to Monitor_NDS\County_NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stage to Monitor_NDS\stage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\stage to Site_NDS">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="124,41.6"
-          Id="Package\stage to Site_NDS\Site_NDS"
-          TopLeft="653.99999025464,329.866666508251" />
+          Size="201.6,41.6"
+          Id="Package\stage to Site_NDS\Sort county and state code"
+          TopLeft="222.666665269268,138.399997917016" />
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\stage to Site_NDS\County_NDS"
           TopLeft="486.166660051379,53.1999991452694" />
         <NodeLayout
-          Size="201.6,41.6"
-          Id="Package\stage to Site_NDS\Sort county and state code"
-          TopLeft="222.666665269268,138.399997917016" />
-        <NodeLayout
           Size="104,41.6"
           Id="Package\stage to Site_NDS\stage"
           TopLeft="67.6666618171668,51.0666664705011" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\stage to Site_NDS\Sort county and state code 2"
+          TopLeft="502.499972544612,136.933332381116" />
+        <NodeLayout
+          Size="124,41.6"
+          Id="Package\stage to Site_NDS\Site_NDS"
+          TopLeft="653.99999025464,329.866666508251" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\stage to Site_NDS\Merge Join 1"
+          TopLeft="371.666646359696,230.533331730233" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\stage to Site_NDS\Data Conversion"
+          TopLeft="189.166656331056,55.4666662809584" />
         <NodeLayout
           Size="227.2,41.6"
           Id="Package\stage to Site_NDS\Add column create and modified"
           TopLeft="335.999983270964,323.39999753654" />
         <EdgeLayout
-          Id="Package\stage to Site_NDS.Paths[Derived Column Output]"
-          TopLeft="563.199983270964,347.433332022396">
+          Id="Package\stage to Site_NDS.Paths[Sort Output1]"
+          TopLeft="607.699972544612,178.533332381116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="90.8000069836761,0"
+              EndConnector="-145.099992851582,51.9999993491173"
               Start="0,0"
-              End="83.3000069836761,0">
+              End="-145.099992851582,44.4999993491173">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="83.3000069836761,0" />
+                    End="0,26.8434281853621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8434281853621"
+                    Point2="0,30.8434281853621"
+                    Point3="-4,30.8434281853621" />
+                  <mssgle:LineSegment
+                    End="-141.099992851582,30.8434281853621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-141.099992851582,30.8434281853621"
+                    Point2="-145.099992851582,30.8434281853621"
+                    Point3="-145.099992851582,34.8434281853621" />
+                  <mssgle:LineSegment
+                    End="-145.099992851582,44.4999993491173" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5297,120 +5593,6 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\stage to Site_NDS\Data Conversion"
-          TopLeft="189.166656331056,55.4666662809584" />
-        <EdgeLayout
-          Id="Package\stage to Site_NDS.Paths[OLE DB Source Output]"
-          TopLeft="119.666661817167,51.0666664705011">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="147.499994513889,4.39999981045733"
-              Start="0,0"
-              End="147.499994513889,-3.10000018954267">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-18.5"
-                    Point2="0,-22.5"
-                    Point3="4,-22.5" />
-                  <mssgle:LineSegment
-                    End="143.499994513889,-22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="143.499994513889,-22.5"
-                    Point2="147.499994513889,-22.5"
-                    Point3="147.499994513889,-18.5" />
-                  <mssgle:LineSegment
-                    End="147.499994513889,-3.10000018954267" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\stage to Site_NDS.Paths[Data Conversion Output]"
-          TopLeft="267.166656331056,97.0666662809584">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="56.3000089382121,41.3333316360577"
-              Start="0,0"
-              End="56.3000089382121,33.8333316360577">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.6666658180288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.6666658180288"
-                    Point2="0,20.6666658180288"
-                    Point3="4,20.6666658180288" />
-                  <mssgle:LineSegment
-                    End="52.3000089382121,20.6666658180288" />
-                  <mssgle:CubicBezierSegment
-                    Point1="52.3000089382121,20.6666658180288"
-                    Point2="56.3000089382121,20.6666658180288"
-                    Point3="56.3000089382121,24.6666658180288" />
-                  <mssgle:LineSegment
-                    End="56.3000089382121,33.8333316360577" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="210.4,41.6"
-          Id="Package\stage to Site_NDS\Sort county and state code 2"
-          TopLeft="502.499972544612,136.933332381116" />
-        <EdgeLayout
-          Id="Package\stage to Site_NDS.Paths[OLE DB Source Output1]"
-          TopLeft="555.766660051379,94.7999991452695">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="51.9333124932328,42.1333332358466"
-              Start="0,0"
-              End="51.9333124932328,34.6333332358466">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.0666666179233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.0666666179233"
-                    Point2="0,21.0666666179233"
-                    Point3="4,21.0666666179233" />
-                  <mssgle:LineSegment
-                    End="47.9333124932328,21.0666666179233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.9333124932328,21.0666666179233"
-                    Point2="51.9333124932328,21.0666666179233"
-                    Point3="51.9333124932328,25.0666666179233" />
-                  <mssgle:LineSegment
-                    End="51.9333124932328,34.6333332358466" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\stage to Site_NDS\Merge Join 1"
-          TopLeft="371.666646359696,230.533331730233" />
         <EdgeLayout
           Id="Package\stage to Site_NDS.Paths[Sort Output]"
           TopLeft="323.466665269268,179.999997917016">
@@ -5446,31 +5628,65 @@ ORDER BY s.state_code;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\stage to Site_NDS.Paths[Sort Output1]"
-          TopLeft="607.699972544612,178.533332381116">
+          Id="Package\stage to Site_NDS.Paths[OLE DB Source Output1]"
+          TopLeft="555.766660051379,94.7999991452695">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-145.099992851582,51.9999993491173"
+              EndConnector="51.9333124932328,42.1333332358466"
               Start="0,0"
-              End="-145.099992851582,44.4999993491173">
+              End="51.9333124932328,34.6333332358466">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.8434281853621" />
+                    End="0,17.0666666179233" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.8434281853621"
-                    Point2="0,30.8434281853621"
-                    Point3="-4,30.8434281853621" />
+                    Point1="0,17.0666666179233"
+                    Point2="0,21.0666666179233"
+                    Point3="4,21.0666666179233" />
                   <mssgle:LineSegment
-                    End="-141.099992851582,30.8434281853621" />
+                    End="47.9333124932328,21.0666666179233" />
                   <mssgle:CubicBezierSegment
-                    Point1="-141.099992851582,30.8434281853621"
-                    Point2="-145.099992851582,30.8434281853621"
-                    Point3="-145.099992851582,34.8434281853621" />
+                    Point1="47.9333124932328,21.0666666179233"
+                    Point2="51.9333124932328,21.0666666179233"
+                    Point3="51.9333124932328,25.0666666179233" />
                   <mssgle:LineSegment
-                    End="-145.099992851582,44.4999993491173" />
+                    End="51.9333124932328,34.6333332358466" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Site_NDS.Paths[OLE DB Source Output]"
+          TopLeft="119.666661817167,51.0666664705011">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147.499994513889,4.39999981045733"
+              Start="0,0"
+              End="147.499994513889,-3.10000018954267">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="143.499994513889,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="143.499994513889,-22.5"
+                    Point2="147.499994513889,-22.5"
+                    Point3="147.499994513889,-18.5" />
+                  <mssgle:LineSegment
+                    End="147.499994513889,-3.10000018954267" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5513,22 +5729,65 @@ ORDER BY s.state_code;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Site_NDS.Paths[Derived Column Output]"
+          TopLeft="563.199983270964,347.433332022396">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.8000069836761,0"
+              Start="0,0"
+              End="83.3000069836761,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="83.3000069836761,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\stage to Site_NDS.Paths[Data Conversion Output]"
+          TopLeft="267.166656331056,97.0666662809584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.3000089382121,41.3333316360577"
+              Start="0,0"
+              End="56.3000089382121,33.8333316360577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6666658180288" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6666658180288"
+                    Point2="0,20.6666658180288"
+                    Point3="4,20.6666658180288" />
+                  <mssgle:LineSegment
+                    End="52.3000089382121,20.6666658180288" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.3000089382121,20.6666658180288"
+                    Point2="56.3000089382121,20.6666658180288"
+                    Point3="56.3000089382121,24.6666658180288" />
+                  <mssgle:LineSegment
+                    End="56.3000089382121,33.8333316360577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\stage to Site_NDS\Site_NDS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\stage to Site_NDS\County_NDS">
     <Properties>
@@ -5542,6 +5801,19 @@ ORDER BY s.state_code;</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\stage to Site_NDS\Site_NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5628,9 +5900,9 @@ ORDER BY s.state_code;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36.3666664539111,53.3999994109074"
+              EndConnector="36.366666453911,53.3999994109074"
               Start="0,0"
-              End="36.3666664539111,45.8999994109074">
+              End="36.366666453911,45.8999994109074">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -5641,13 +5913,13 @@ ORDER BY s.state_code;</property>
                     Point2="0,26.6999997054537"
                     Point3="4,26.6999997054537" />
                   <mssgle:LineSegment
-                    End="32.3666664539111,26.6999997054537" />
+                    End="32.366666453911,26.6999997054537" />
                   <mssgle:CubicBezierSegment
-                    Point1="32.3666664539111,26.6999997054537"
-                    Point2="36.3666664539111,26.6999997054537"
-                    Point3="36.3666664539111,30.6999997054537" />
+                    Point1="32.366666453911,26.6999997054537"
+                    Point2="36.366666453911,26.6999997054537"
+                    Point3="36.366666453911,30.6999997054537" />
                   <mssgle:LineSegment
-                    End="36.3666664539111,45.8999994109074" />
+                    End="36.366666453911,45.8999994109074" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5672,245 +5944,8 @@ ORDER BY s.state_code;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\stage to Monitor_NDS">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="140.8,41.6"
-          Id="Package\stage to Monitor_NDS\Monitor_NDS"
-          TopLeft="370.999994471669,296.866666999989" />
-        <NodeLayout
-          Size="139.2,41.6"
-          Id="Package\stage to Monitor_NDS\County_NDS"
-          TopLeft="486.166660051379,53.1999991452694" />
-        <NodeLayout
-          Size="104,41.6"
-          Id="Package\stage to Monitor_NDS\stage"
-          TopLeft="25.6666624430155,52.0666664555999" />
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\stage to Monitor_NDS\Data Conversion"
-          TopLeft="179.999997317791,53.9999991953373" />
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[OLE DB Source Output]"
-          TopLeft="129.666662443016,73.8333328254686">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="50.3333348747755,0"
-              Start="0,0"
-              End="42.8333348747755,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="42.8333348747755,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="97.6,41.6"
-          Id="Package\stage to Monitor_NDS\Sort"
-          TopLeft="206.99999691546,131.999998033047" />
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[Data Conversion Output]"
-          TopLeft="256.899997116625,95.5999991953373">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.3999988377094"
-              Start="0,0"
-              End="0,28.8999988377094">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.8999988377094" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\stage to Monitor_NDS\Sort 1"
-          TopLeft="510.999992385507,131.999998033047" />
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[OLE DB Source Output1]"
-          TopLeft="555.766660051379,94.7999991452694">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.43333233412795,37.1999988877773"
-              Start="0,0"
-              End="8.43333233412795,29.6999988877773">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5999994438887" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5999994438887"
-                    Point2="0,18.5999994438887"
-                    Point3="4,18.5999994438887" />
-                  <mssgle:LineSegment
-                    End="4.43333233412795,18.5999994438887" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.43333233412795,18.5999994438887"
-                    Point2="8.43333233412795,18.5999994438887"
-                    Point3="8.43333233412795,22.5999994438887" />
-                  <mssgle:LineSegment
-                    End="8.43333233412795,29.6999988877773" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\stage to Monitor_NDS\Merge Join"
-          TopLeft="356.999994680286,204.999996945262" />
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[Sort Output]"
-          TopLeft="255.79999691546,173.599998033047">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="165.999997764826,31.3999989122153"
-              Start="0,0"
-              End="165.999997764826,23.8999989122153">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.6999994561076" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.6999994561076"
-                    Point2="0,15.6999994561076"
-                    Point3="4,15.6999994561076" />
-                  <mssgle:LineSegment
-                    End="161.999997764826,15.6999994561076" />
-                  <mssgle:CubicBezierSegment
-                    Point1="161.999997764826,15.6999994561076"
-                    Point2="165.999997764826,15.6999994561076"
-                    Point3="165.999997764826,19.6999994561076" />
-                  <mssgle:LineSegment
-                    End="165.999997764826,23.8999989122153" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[Sort Output1]"
-          TopLeft="564.199992385507,173.599998033047">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-122.133331038555,31.3999989122153"
-              Start="0,0"
-              End="-122.133331038555,23.8999989122153">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.6102432577276" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.6102432577276"
-                    Point2="0,18.6102432577276"
-                    Point3="-4,18.6102432577276" />
-                  <mssgle:LineSegment
-                    End="-118.133331038555,18.6102432577276" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-118.133331038555,18.6102432577276"
-                    Point2="-122.133331038555,18.6102432577276"
-                    Point3="-122.133331038555,22.6102432577276" />
-                  <mssgle:LineSegment
-                    End="-122.133331038555,23.8999989122153" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\stage to Monitor_NDS.Paths[Merge Join Output]"
-          TopLeft="421.799994680286,246.599996945262">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="19.599999791383,50.2666700547273"
-              Start="0,0"
-              End="19.599999791383,42.7666700547273">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.1333350273637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.1333350273637"
-                    Point2="0,25.1333350273637"
-                    Point3="4,25.1333350273637" />
-                  <mssgle:LineSegment
-                    End="15.599999791383,25.1333350273637" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.599999791383,25.1333350273637"
-                    Point2="19.599999791383,25.1333350273637"
-                    Point3="19.599999791383,29.1333350273637" />
-                  <mssgle:LineSegment
-                    End="19.599999791383,42.7666700547273" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\stage to Monitor_NDS\Monitor_NDS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\stage to Monitor_NDS\County_NDS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\stage to Monitor_NDS\stage">
+    design-time-name="Package\stage to State_NDS\stage">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

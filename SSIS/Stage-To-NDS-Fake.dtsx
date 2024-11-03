@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/31/2024 4:31:35 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="Stage-To-NDS-Fake"
   DTS:PackageType="5"
   DTS:VersionBuild="22"
-  DTS:VersionGUID="{E1208629-5EFF-4AD5-828D-376FB2E2D246}">
+  DTS:VersionGUID="{62E05E99-7E8A-421F-98E9-D6D513D293F6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -212,7 +212,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">INSERT INTO AQI_Category_NDS (category_name, aqi_min_value, aqi_max_value, description, created_date, modified_date)
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO AQI_Category_NDS (category_name, aqi_min_value, aqi_max_value, description, created_date, modified_date)
 VALUES 
     ('Good', 0, 50, 'Air quality is satisfactory, and air pollution poses little or no risk.', GETDATE(), GETDATE()),
     ('Moderate', 51, 100, 'Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.', GETDATE(), GETDATE()),
@@ -229,8 +229,8 @@ VALUES
               <connections>
                 <connection
                   refId="Package\Dataset AQI_Category_NDS\Insert dataset.Connections[OleDbConnection]"
-                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 1]"
+                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  connectionManagerRefId="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -302,7 +302,7 @@ VALUES
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -542,7 +542,7 @@ VALUES
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT state_code_SK
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT state_code_SK
 FROM State_NDS
 WHERE state_code_NK = 1</property>
                 <property
@@ -550,7 +550,7 @@ WHERE state_code_NK = 1</property>
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -670,7 +670,7 @@ WHERE state_code_NK = 1</property>
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE State_NDS 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE State_NDS 
 SET state_name = ?, 
 state_id = ?,
 created_date = ?,
@@ -684,8 +684,8 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
               <connections>
                 <connection
                   refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 1]"
+                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  connectionManagerRefId="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -702,13 +702,13 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedDataType="i4"
                       cachedName="state_code_NK"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\204:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\241:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_code_SK]"
                       cachedDataType="i4"
                       cachedName="state_code_SK"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\205:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\242:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_id]"
                       cachedCodepage="1252"
@@ -716,7 +716,7 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedLength="10"
                       cachedName="state_id"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\206:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\243:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_name]"
                       cachedCodepage="1252"
@@ -724,7 +724,7 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedLength="50"
                       cachedName="state_name"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\207:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\244:invalid" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -860,7 +860,7 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -912,7 +912,7 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedDataType="i4"
                       cachedName="state_code_NK"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code_NK]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\204:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\241:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_name]"
                       cachedCodepage="1252"
@@ -920,7 +920,7 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedLength="50"
                       cachedName="state_name"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\207:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\244:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_id]"
                       cachedCodepage="1252"
@@ -928,19 +928,19 @@ WHERE state_code_nk = ? and state_code_SK = ?</property>
                       cachedLength="10"
                       cachedName="state_id"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_id]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\206:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\243:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="created_date"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\208:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\245:invalid" />
                     <inputColumn
                       refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[modified_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="modified_date"
                       externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modified_date]"
-                      lineageId="Package\Để tạm nơi xử lí case trùng ID\209:invalid" />
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\246:invalid" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="ALEX.AirPollution_Stage"
   DTS:DTSID="{4B18451A-E120-4036-AF3E-A13E453CE861}"

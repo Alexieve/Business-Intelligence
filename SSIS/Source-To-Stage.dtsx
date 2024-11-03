@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Source-To-Stage"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{ACF3E4EF-EA6A-488E-AE62-4810B381F5F1}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{DB0206E3-4763-48F4-982D-04F41A925E95}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -98,6 +98,30 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Source-To-Stage-{748CC74E-4C21-4E72-8DD6-F392813C25AB}DESKTOP-7UFG86B.AirPollution_Stage1 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Metadata 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
+      DTS:ObjectName="DESKTOP-C7QTEP4.AirPollution_Metadata 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-C7QTEP4;Initial Catalog=AirPollution_Metadata;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Source-To-Stage-{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}DESKTOP-C7QTEP4.AirPollution_Metadata 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7265881C-85B0-48D5-9C55-CB7B128F05E9}"
+      DTS:ObjectName="DESKTOP-C7QTEP4.AirPollution_Stage 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-C7QTEP4;Initial Catalog=AirPollution_Stage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Source-To-Stage-{7265881C-85B0-48D5-9C55-CB7B128F05E9}DESKTOP-C7QTEP4.AirPollution_Stage 1;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -330,6 +354,134 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 10]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{173E1A87-B426-43E7-97CF-0ABBE5EDBC1B}"
+      DTS:ObjectName="Flat File Connection Manager 10">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\Air_Quality_Data\state_aqi_2022.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State Name"
+              DTS:DTSID="{7C7BF567-666F-4C78-B007-77D718EC5C63}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county Name"
+              DTS:DTSID="{C0F14919-1716-4C79-8818-75CE2A2856A8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State Code"
+              DTS:DTSID="{A095C7F1-59F9-4B1A-B041-E5BC8A9F84D7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="County Code"
+              DTS:DTSID="{C2A753A5-5C1A-4F06-973D-CB0E7789DC92}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{9106B0B7-8886-4E17-BB53-52111F1AB0D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AQI"
+              DTS:DTSID="{BF7854A0-72F2-4A5F-ACFB-20796283C0C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Category"
+              DTS:DTSID="{783678AE-7BE3-4E36-99D2-40124A77B27D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Defining Parameter"
+              DTS:DTSID="{716211C5-E8CB-4854-A664-EC985377BD70}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Defining Site"
+              DTS:DTSID="{8B1CCC0C-B7CB-495F-9A77-10659928ECB1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Number of Sites Reporting"
+              DTS:DTSID="{B5B26DB4-18CC-4BE1-B007-8B4F635B9031}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Created"
+              DTS:DTSID="{803C0A40-B564-4EFF-97C3-9A5605139886}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Last Updated"
+              DTS:DTSID="{156D2D43-E85C-4E7C-A19B-DA7782741240}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 2]"
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{258F1ED4-5D25-49CD-9AD5-F49F9E52DC46}"
@@ -452,6 +604,866 @@
               DTS:TextQualified="True"
               DTS:ObjectName="last_updated"
               DTS:DTSID="{70465574-6DE2-4CE4-ACC5-0ABAA88486DF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 3]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{05983264-B54B-462A-8F73-6B7C9BF4BEE9}"
+      DTS:ObjectName="Flat File Connection Manager 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\uscounties.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county&quot;"
+              DTS:DTSID="{8D58193C-7EA9-4F71-BCFA-D3374338DBD0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_ascii&quot;"
+              DTS:DTSID="{ED29B5B7-950F-488D-B510-96106EA4DE49}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_full&quot;"
+              DTS:DTSID="{587A74D5-A666-4E09-955A-9988A79CD418}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_fips&quot;"
+              DTS:DTSID="{CFE344DE-6AB8-4D09-8441-AA6414C74D58}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_id&quot;"
+              DTS:DTSID="{C014EC02-0A1E-46CD-A328-5CE72EA00845}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_name&quot;"
+              DTS:DTSID="{9B4FD8CB-DAA2-4729-94DA-D49E19C1E47C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lat&quot;"
+              DTS:DTSID="{C4C15CDC-F7ED-421F-8E01-7B14CCCA3531}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lng&quot;"
+              DTS:DTSID="{C15A0884-C638-49E8-A717-CF6A2085F48D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;population&quot;"
+              DTS:DTSID="{E16F6BE1-13D9-47E5-A3C2-4B3EEA372876}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 4]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{21B8EE8E-0959-4A65-A662-C8E4868D15C0}"
+      DTS:ObjectName="Flat File Connection Manager 4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{A3EBA064-E00E-4377-9790-AED5C14DD8D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{73EFD884-22BE-4994-837D-3EE27C8F9CA0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{591D725A-0D9D-4C79-B14A-DF8D1715BF3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{F7C1ED7F-B70E-4745-8992-D00808323CEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{AC8A5B2D-8D79-46FB-A011-5FAB9256333B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{2DF2D603-6281-4348-B371-D270590DC989}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{57DCC9BE-3F24-45B8-8308-57DBE4B70C63}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{F6FDB632-3BD7-4660-AF6D-901B3853D9A8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{83CD122C-D29A-4B6E-8093-C6760DAA2C90}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{1B4057DD-26CA-4FBE-97E4-101DCA660CD7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{17673945-A181-47CB-A655-F89D6850C330}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{51A841F9-CAA9-4F64-9DDD-AC343A6D8947}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 5]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{D5DADD2A-CB33-4520-B4A7-B0A409FD5DA6}"
+      DTS:ObjectName="Flat File Connection Manager 5">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{C758E697-3787-483B-8537-2385178C58A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{8CF357CD-3999-4F9A-8630-630089880583}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{5EB60240-4D5D-4DBC-A8FE-AE07F8E1223B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{06F5B624-121E-48E8-9113-9DEB211798A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{418394C4-F1DF-4D7D-8002-F323A256CB76}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{34B87DC5-3FC1-4585-9E0C-00674C7CDD34}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{17A54FA7-CF79-47A8-ACA8-5BAA4E70398A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{1253F64F-685C-4465-B0E2-98A7E08ACE8C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{91419CB1-4C78-410E-9FED-13444D82E7D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{EB06D210-AD64-44A1-A141-0F1C0269A26E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{97AB793E-5259-44FD-A8FD-C5632A5B5B50}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{50B7A800-F997-40BD-8666-34F1349419B9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 6]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{74017BD1-347E-4BF2-A830-7A5E2ADA705C}"
+      DTS:ObjectName="Flat File Connection Manager 6">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{519C635C-638D-4828-B738-8A7AFEFD66C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{432C3A6E-C91F-4B64-A1AE-A467EFC609CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{83975E9A-4A82-4F1D-A714-D3EA8C146A05}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{C834D407-7920-475E-A8DF-8348E99C0F1F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{78A9A824-2890-40DD-99D8-91134C751B65}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{E4FCA7D7-4625-4CB7-8C6D-EA2781CE47CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{EF17758F-4126-4E86-9BB0-FDE3D8C119EA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{9A81F602-3448-4F75-A3FB-2FE82300BD7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{3A77FA9F-0D71-4A89-AB0A-5D20A7D19E6E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{02178C67-9115-4F32-8675-61BBFF58CC9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{85D1887F-C2A6-4D93-8F3A-8F0A7A62747F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{8D541CCD-ECBE-4DBB-B2D3-13C7D49A1931}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 7]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B21129F4-5AD7-49E2-98E1-2A5D0FD9E2C1}"
+      DTS:ObjectName="Flat File Connection Manager 7">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{309D0FDD-7331-4952-A7C9-1D53BCEEF29E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{06D05C6F-A407-4C4D-9E40-162427AC3169}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{00F1E2FE-0D5F-43F0-8243-367ACB1FEF6B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{BE138A27-3F1A-405D-9F13-E9A9D5CF484A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{4B1839C6-25C9-4704-ADA0-3B2BAC79BD42}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{97CAADE1-3102-4FCC-972E-332144B0D625}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{20098571-2CC5-4A35-99AC-6AD901EFC8EC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{6F30B1BA-3AB8-4CD6-AB5B-A342B024813C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{BFFEAC4E-32C9-440A-96AC-0D7EB99EC721}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{30C253EE-8B18-4279-B5A4-8CC37BD43614}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{539810F0-58C1-4353-9A1C-519CD81CCF21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{993E3730-6FFF-4464-9804-8B6A5E7A6D9B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 8]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{167B9F68-686C-4047-8C8B-3132989AC681}"
+      DTS:ObjectName="Flat File Connection Manager 8">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{17B6D9AA-6629-4C89-B1F0-0D3DC53EF04E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{38E18D8A-7455-4325-8B24-6B1F7F0C24CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{6A7C85F1-53CA-41FD-A708-31B39628B4D7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{C46E3B4D-B2D4-47A2-A8B9-B3D152015243}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{50AEF6E0-9FF0-4ABC-BEC6-CA0828820850}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{DCC6CCB2-4BC5-4A5B-B131-473E843429AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{F503CF28-E0D2-43C1-8132-A022D79A9AC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{543616BB-AB15-41E1-8E4F-20AD259E570F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{8A77EE2D-27FE-45D5-8760-52D07F3A610D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{BAFD11F0-08DA-4B7A-90CC-16814C36DA84}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{550E56EC-1018-4EE1-A58B-11FF9CE9DD5C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{873A49D7-BDBF-42F6-BF36-0E1D23797EA3}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 9]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{989DC09A-C076-4C39-B0DA-899DF33DEFB7}"
+      DTS:ObjectName="Flat File Connection Manager 9">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Admin\Desktop\CSDL\Business-Intelligence\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{4C257902-122C-4584-861E-55C3EB88086B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{F91C8F76-CCD6-4903-8A04-4C5DD408D40D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{93FCDA0E-CA80-4ABE-BBF0-E99838DD0286}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{BA9F7D26-60FB-4C20-945E-AA5C460CA2C3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{891448A3-C5D2-4B6C-BFEC-7219C9F6A31E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{572DD5D3-A7B1-4738-8BCD-B0F0158A98DA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{2E3B2E0F-4B21-4396-BD14-9F113A749650}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{1B8B9926-29D4-41C9-B682-BE58FE156D51}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{F1000082-7F82-49F1-B4CA-8E05C20F6E09}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{33388EB7-7DD2-494F-A61C-FBA43B81CC21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{880FF84F-8248-4011-95C8-0ACC1694625F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{9144B502-4F7B-4143-9C23-557F4782C7DE}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -697,11 +1709,136 @@
           version="1">
           <components>
             <component
+              refId="Package\Push state_aqi Source into Stage\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input].Columns[date]"
+                      cachedDataType="date"
+                      cachedName="date"
+                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input].Columns[created]"
+                      cachedDataType="date"
+                      cachedName="created"
+                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[created]" />
+                    <inputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input].Columns[last_updated]"
+                      cachedDataType="date"
+                      cachedName="last_updated"
+                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]"
+                      name="Copy of date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of created]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of created]"
+                      name="Copy of created"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[created]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of last_updated]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of last_updated]"
+                      name="Copy of last_updated"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Push state_aqi Source into Stage\Flat File Source"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
-              localeId="4105"
+              localeId="1033"
               name="Flat File Source"
               usesDispositions="true"
               version="1">
@@ -718,8 +1855,8 @@
               <connections>
                 <connection
                   refId="Package\Push state_aqi Source into Stage\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 2]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 8]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 8]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -773,10 +1910,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]"
-                      dataType="ui4"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[state_code]"
+                      length="50"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]"
                       name="state_code"
                       truncationRowDisposition="FailComponent">
@@ -793,10 +1932,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]"
-                      dataType="ui4"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[county_code]"
+                      length="50"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]"
                       name="county_code"
                       truncationRowDisposition="FailComponent">
@@ -833,10 +1974,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]"
-                      dataType="ui4"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aqi]"
+                      length="50"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]"
                       name="aqi"
                       truncationRowDisposition="FailComponent">
@@ -919,10 +2062,12 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]"
-                      dataType="ui4"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[number_of_sites_reporting]"
+                      length="50"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]"
                       name="number_of_sites_reporting"
                       truncationRowDisposition="FailComponent">
@@ -1142,8 +2287,8 @@
               <connections>
                 <connection
                   refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1172,12 +2317,6 @@
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_site]"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[defining_site]" />
                     <inputColumn
-                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
-                      cachedDataType="date"
-                      cachedName="date"
-                      externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
-                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[date]" />
-                    <inputColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_parameter]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1187,13 +2326,17 @@
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[defining_parameter]" />
                     <inputColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_code]"
-                      cachedDataType="ui4"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="state_code"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code]"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]" />
                     <inputColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[county_code]"
-                      cachedDataType="ui4"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="county_code"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_code]"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]" />
@@ -1207,7 +2350,9 @@
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[county_name]" />
                     <inputColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aqi]"
-                      cachedDataType="ui4"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="aqi"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aqi]"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]" />
@@ -1221,22 +2366,30 @@
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[category]" />
                     <inputColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[number_of_sites_reporting]"
-                      cachedDataType="ui4"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="number_of_sites_reporting"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[number_of_sites_reporting]"
                       lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]" />
                     <inputColumn
-                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created]"
-                      cachedDataType="date"
-                      cachedName="created"
-                      externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created]"
-                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[created]" />
-                    <inputColumn
-                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_updated]"
-                      cachedDataType="date"
-                      cachedName="last_updated"
+                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of last_updated]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of last_updated"
                       externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
-                      lineageId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]" />
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of last_updated]" />
+                    <inputColumn
+                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of created]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of created"
+                      externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created]"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of created]" />
+                    <inputColumn
+                      refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of date]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of date"
+                      externalMetadataColumnId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1254,7 +2407,8 @@
                       name="defining_site" />
                     <externalMetadataColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
-                      dataType="dbDate"
+                      dataType="wstr"
+                      length="10"
                       name="date" />
                     <externalMetadataColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
@@ -1292,14 +2446,14 @@
                       name="number_of_sites_reporting" />
                     <externalMetadataColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created]"
-                      dataType="dbTimeStamp2"
-                      name="created"
-                      scale="7" />
+                      dataType="wstr"
+                      length="27"
+                      name="created" />
                     <externalMetadataColumn
                       refId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
-                      dataType="dbTimeStamp2"
-                      name="last_updated"
-                      scale="7" />
+                      dataType="wstr"
+                      length="27"
+                      name="last_updated" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1331,8 +2485,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Push state_aqi Source into Stage.Paths[Flat File Source Output]"
+              refId="Package\Push state_aqi Source into Stage.Paths[Data Conversion Output]"
               endId="Package\Push state_aqi Source into Stage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Push state_aqi Source into Stage\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Push state_aqi Source into Stage.Paths[Flat File Source Output]"
+              endId="Package\Push state_aqi Source into Stage\Data Conversion.Inputs[Data Conversion Input]"
               name="Flat File Source Output"
               startId="Package\Push state_aqi Source into Stage\Flat File Source.Outputs[Flat File Source Output]" />
           </paths>
@@ -1939,7 +3098,7 @@
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
-              localeId="4105"
+              localeId="1033"
               name="Flat File Source"
               usesDispositions="true"
               version="1">
@@ -1956,8 +3115,8 @@
               <connections>
                 <connection
                   refId="Package\Push uscounties Source into Stage\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 3]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 3]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -2310,8 +3469,8 @@
               <connections>
                 <connection
                   refId="Package\Push uscounties Source into Stage\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-C7QTEP4.AirPollution_Stage 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2508,7 +3667,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="SELECT LSET, CET FROM DATA_FLOW WHERE TABLE_NAME = 'state_aqi'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2525,7 +3684,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="SELECT LSET, CET FROM DATA_FLOW WHERE TABLE_NAME = 'uscounties'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2542,7 +3701,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET CET = GETDATE() WHERE TABLE_NAME = 'state_aqi'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2559,7 +3718,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET CET = GETDATE() WHERE TABLE_NAME = 'uscounties'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2576,7 +3735,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = GETDATE() WHERE TABLE_NAME = 'state_aqi'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2593,7 +3752,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{F5E896E1-4DEA-4791-98B6-B56ACB96907C}"
+          SQLTask:Connection="{9E2A5B4C-733B-4DC8-BF6D-55A47DF32438}"
           SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = GETDATE() WHERE TABLE_NAME = 'uscounties'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2610,7 +3769,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{A3B1AA14-F0D1-4B48-BBC2-11D9379C88AE}"
+          SQLTask:Connection="{7265881C-85B0-48D5-9C55-CB7B128F05E9}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE state_aqi" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2627,7 +3786,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{A3B1AA14-F0D1-4B48-BBC2-11D9379C88AE}"
+          SQLTask:Connection="{7265881C-85B0-48D5-9C55-CB7B128F05E9}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE uscounties" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -2711,7 +3870,7 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="233.6,41.6"
+          Size="232,41.6"
           Id="Package\Push state_aqi Source into Stage"
           TopLeft="925.871612696514,292.491736652085" />
         <NodeLayout
@@ -2749,21 +3908,21 @@
         <NodeLayout
           Size="199.2,41.6"
           Id="Package\Truncate table uscounties"
-          TopLeft="649.428572836578,141.058823458361" />
+          TopLeft="649.428572836578,141.925490119001" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="749.640477600638,105.423529408413">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.6352940499479"
+              EndConnector="0,36.5019607105878"
               Start="0,0"
-              End="0,28.1352940499479">
+              End="0,29.0019607105878">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.1352940499479" />
+                    End="0,29.0019607105878" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2774,18 +3933,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="747.367034103217,182.658823458361">
+          TopLeft="747.367034103217,183.525490119001">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.2371040114523"
+              EndConnector="0,35.370437350813"
               Start="0,0"
-              End="0,28.7371040114523">
+              End="0,27.870437350813">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.7371040114523" />
+                    End="0,27.870437350813" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2884,7 +4043,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1044.18855403319,258.825899479708">
+          TopLeft="1043.78855403318,258.825899479708">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2906,18 +4065,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="1043.53745525662,334.091736652085">
+          TopLeft="1043.13745525662,334.091736652085">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.2578429335849"
+              EndConnector="0,29.257842933585"
               Start="0,0"
-              End="0,21.7578429335849">
+              End="0,21.757842933585">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.7578429335849" />
+                    End="0,21.757842933585" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2968,29 +4127,79 @@
     design-time-name="Package\Push state_aqi Source into Stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170.4,41.6"
+          Size="171.2,41.6"
           Id="Package\Push state_aqi Source into Stage\OLE DB Destination"
           TopLeft="302.000000779117,200.529413173716" />
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Push state_aqi Source into Stage\Flat File Source"
           TopLeft="316.428572102165,71.1176469964862" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Push state_aqi Source into Stage\Data Conversion"
+          TopLeft="623.333299275903,147.333332308796" />
         <EdgeLayout
           Id="Package\Push state_aqi Source into Stage.Paths[Flat File Source Output]"
-          TopLeft="389.414286440641,112.717646996486">
+          TopLeft="391.628572102165,112.717646996486">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,87.81176617723"
+              EndConnector="309.704727173738,34.6156853123096"
               Start="0,0"
-              End="0,80.31176617723">
+              End="309.704727173738,27.1156853123096">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.31176617723" />
+                    End="0,13.3078426561548" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3078426561548"
+                    Point2="0,17.3078426561548"
+                    Point3="4,17.3078426561548" />
+                  <mssgle:LineSegment
+                    End="305.704727173738,17.3078426561548" />
+                  <mssgle:CubicBezierSegment
+                    Point1="305.704727173738,17.3078426561548"
+                    Point2="309.704727173738,17.3078426561548"
+                    Point3="309.704727173738,21.3078426561548" />
+                  <mssgle:LineSegment
+                    End="309.704727173738,27.1156853123096" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push state_aqi Source into Stage.Paths[Data Conversion Output]"
+          TopLeft="623.333299275903,168.133332308796">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150.133298496786,53.1960808649202"
+              Start="0,0"
+              End="-142.633298496786,53.1960808649202">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-71.0666492483931,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71.0666492483931,0"
+                    Point2="-75.0666492483931,0"
+                    Point3="-75.0666492483931,4" />
+                  <mssgle:LineSegment
+                    End="-75.0666492483931,49.1960808649202" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-75.0666492483931,49.1960808649202"
+                    Point2="-75.0666492483931,53.1960808649202"
+                    Point3="-79.0666492483931,53.1960808649202" />
+                  <mssgle:LineSegment
+                    End="-142.633298496786,53.1960808649202" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3021,13 +4230,13 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Push uscounties Source into Stage\Flat File Source"
+          TopLeft="316.428572102165,71.1176469964862" />
+        <NodeLayout
           Size="170.4,41.6"
           Id="Package\Push uscounties Source into Stage\OLE DB Destination"
           TopLeft="310.000000659908,313.529411489885" />
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Push uscounties Source into Stage\Flat File Source"
-          TopLeft="316.428572102165,71.1176469964862" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\Push uscounties Source into Stage\Derived Column"
@@ -3036,6 +4245,28 @@
           Size="155.2,41.6"
           Id="Package\Push uscounties Source into Stage\Data Conversion"
           TopLeft="311.428572091521,225.588235096381" />
+        <EdgeLayout
+          Id="Package\Push uscounties Source into Stage.Paths[Flat File Source Output]"
+          TopLeft="390.642857812649,112.717646996486">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.1058822865818"
+              Start="0,0"
+              End="0,26.6058822865818">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6058822865818" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Push uscounties Source into Stage.Paths[Derived Column Output]"
           TopLeft="389.142857807327,188.423529283068">
@@ -3072,28 +4303,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,38.8411763935038" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push uscounties Source into Stage.Paths[Flat File Source Output]"
-          TopLeft="390.442857812649,112.717646996486">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.1058822865815"
-              Start="0,0"
-              End="0,26.6058822865815">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.6058822865815" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

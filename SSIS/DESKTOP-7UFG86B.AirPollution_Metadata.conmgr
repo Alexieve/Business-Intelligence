@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_Metadata"
   DTS:DTSID="{427F5EB5-8DD0-4BF8-978F-F3D349E5B3C1}"
