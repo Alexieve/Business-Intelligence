@@ -12,7 +12,7 @@ GO
 
 CREATE TABLE State_NDS(
 	state_SK int IDENTITY(1,1),
-	state_code_NK int UNIQUE,
+	state_code_NK int NOT NULL,
 	state_id varchar(5) NULL,
 	state_name varchar(50) NOT NULL,
 	created_date datetime2(7) NOT NULL,
@@ -30,9 +30,7 @@ CREATE TABLE County_NDS(
 	county_fips_NK varchar(5) NULL,
 	created_date datetime2(7) NOT NULL,
 	modified_date datetime2(7) NOT NULL,
-	CONSTRAINT PK_County_NDS PRIMARY KEY CLUSTERED (county_SK),
-	CONSTRAINT U_county_fips_NK UNIQUE(county_fips_NK),
-	CONSTRAINT U_state_SK_county_code UNIQUE(state_SK, county_code)
+	CONSTRAINT PK_County_NDS PRIMARY KEY CLUSTERED (county_SK)
 )
 
 CREATE TABLE Site_NDS(
@@ -42,9 +40,7 @@ CREATE TABLE Site_NDS(
 	defining_site_NK VARCHAR(11) NOT NULL,
 	created_date datetime2(7) NOT NULL,
 	modified_date datetime2(7) NOT NULL,
-	CONSTRAINT PK_Site_NDS PRIMARY KEY CLUSTERED (site_SK),
-	CONSTRAINT U_defining_site_NK UNIQUE(defining_site_NK),
-	CONSTRAINT U_county_SK_site_code UNIQUE(county_SK, site_code)
+	CONSTRAINT PK_Site_NDS PRIMARY KEY CLUSTERED (site_SK)
 )
 
 CREATE TABLE AQI_Category_NDS(
@@ -53,8 +49,8 @@ CREATE TABLE AQI_Category_NDS(
 	aqi_min_value int NOT NULL,
 	aqi_max_value int NOT NULL,
 	description varchar(255) NOT NULL,
-	created_date datetime2(7) not null,
-	modified_date datetime2(7) not null,
+	created_date datetime2(7) NOT NULL,
+	modified_date datetime2(7) NOT NULL,
 	CONSTRAINT PK_AQI_Category_NDS PRIMARY KEY CLUSTERED (category_SK)
 )
 
@@ -68,8 +64,7 @@ CREATE TABLE Monitor_NDS(
 	number_of_sites_reporting int NOT NULL,
 	created_date datetime2(7) NOT NULL,
 	modified_date datetime2(7) NOT NULL,
-	CONSTRAINT PK_Monitor_NDS PRIMARY KEY CLUSTERED(monitor_SK),
-	CONSTRAINT U_Monitor_NDS_date_site_SK_defining_parameter UNIQUE(date, site_SK, defining_parameter)
+	CONSTRAINT PK_Monitor_NDS PRIMARY KEY CLUSTERED(monitor_SK)
 )
 
 ALTER TABLE County_NDS
