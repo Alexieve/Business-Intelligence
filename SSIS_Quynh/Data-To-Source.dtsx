@@ -1,0 +1,2272 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2024 7:07:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALEX"
+  DTS:CreatorName="ALEX\ASUS"
+  DTS:DTSID="{1540D916-E975-490B-BBB9-9F8041417E52}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{7BAF06BE-3A65-48E0-87E5-267252EBEC79}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALEX.AirPollution]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{22984B3D-C509-40ED-9FFF-7F0CD6EF8AA8}"
+      DTS:ObjectName="ALEX.AirPollution">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ALEX;Initial Catalog=AirPollution;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{22984B3D-C509-40ED-9FFF-7F0CD6EF8AA8}ALEX.AirPollution;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALEX.AirPollution_Stage 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{346F6BF2-96F3-4D79-8458-8F8B1D436B34}"
+      DTS:ObjectName="ALEX.AirPollution_Stage 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=ALEX;Initial Catalog=AirPollution_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Source-To-Stage-{346F6BF2-96F3-4D79-8458-8F8B1D436B34}ALEX.AirPollution_Stage 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[state_aqi csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{07F79F00-4136-460A-B85C-A1ED7FC56CC9}"
+      DTS:ObjectName="state_aqi csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Study\YEAR4\BI\Project\Data\state_aqi_full.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_name"
+              DTS:DTSID="{B1D95CED-F9CB-49CD-8F27-02F488868DDB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_name"
+              DTS:DTSID="{A3FA5C49-6E21-481B-8B04-D348FE7BE147}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state_code"
+              DTS:DTSID="{050C364B-1B51-4678-9D68-3AA5A2E39467}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="county_code"
+              DTS:DTSID="{E8D3B237-65D7-4B2A-8ED6-297C5B344EE3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{BC192AA1-7F08-48FC-8DC1-13A69D913A21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="aqi"
+              DTS:DTSID="{019ACBB9-EB3B-4E8F-8801-6105FBF08808}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="category"
+              DTS:DTSID="{EEF40891-12D8-422B-9470-3CDC9E2D9E9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_parameter"
+              DTS:DTSID="{1C5BBB59-C667-4FEB-8991-1AEEF745B6E9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="defining_site"
+              DTS:DTSID="{6919A2E9-A400-4755-91D8-ECC8E6815DAA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="19"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_sites_reporting"
+              DTS:DTSID="{6916A073-F088-4C67-9EBC-C20B807BE9ED}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created"
+              DTS:DTSID="{A6D9D1F5-FA16-40F7-B2CD-EE7BA6E60379}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_updated"
+              DTS:DTSID="{5385A737-15E6-4B8A-94B8-2A6AEC9EAC64}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[uscounties csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A271A0E7-B4AC-4582-A2FE-E6AF3A83ACDC}"
+      DTS:ObjectName="uscounties csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\Study\YEAR4\BI\Project\Data\uscounties.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county&quot;"
+              DTS:DTSID="{5ED2C0DC-EE4F-4414-87AE-CEF3BE3AD02E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_ascii&quot;"
+              DTS:DTSID="{F335370B-DB8A-4C17-9C1A-4AEB5100DE85}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_full&quot;"
+              DTS:DTSID="{1B05CFB9-9C92-4D33-8807-54B517CBE139}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_fips&quot;"
+              DTS:DTSID="{2C11B942-168F-4331-B5EA-ED65A8CE2FE4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_id&quot;"
+              DTS:DTSID="{877F47C8-6591-4C65-A3B2-8489A790F837}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_name&quot;"
+              DTS:DTSID="{A1450B26-67DF-47B4-9725-B9D893EB7090}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lat&quot;"
+              DTS:DTSID="{1522338F-0FAD-4DCC-B671-1849E81D212F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lng&quot;"
+              DTS:DTSID="{4F33B3A4-70B5-42B5-814C-E97955451ED3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;population&quot;"
+              DTS:DTSID="{F5A60CFB-20DE-4B8F-AFBB-C2924438AD66}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Import state_aqi to Source DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1bfeb3ca-6317-4531-bf58-1fc263781568}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import state_aqi to Source DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import state_aqi to Source DB\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import state_aqi to Source DB\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[state_aqi csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[state_aqi csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[state_name]"
+                      length="50"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]"
+                      name="state_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[county_name]"
+                      length="50"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_name]"
+                      name="county_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[state_code]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]"
+                      name="state_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[county_code]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]"
+                      name="county_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aqi]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]"
+                      name="aqi"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[category]"
+                      length="50"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[category]"
+                      name="category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_parameter]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[defining_parameter]"
+                      length="50"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_parameter]"
+                      name="defining_parameter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_site]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[defining_site]"
+                      length="50"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_site]"
+                      name="defining_site"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[number_of_sites_reporting]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]"
+                      name="number_of_sites_reporting"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[created]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[created]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[created]"
+                      name="created"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[last_updated]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]"
+                      name="last_updated"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state_name" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[county_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="county_name" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[state_code]"
+                      dataType="ui4"
+                      name="state_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[county_code]"
+                      dataType="ui4"
+                      name="county_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      dataType="date"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aqi]"
+                      dataType="ui4"
+                      name="aqi" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[defining_parameter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="defining_parameter" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[defining_site]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="defining_site" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[number_of_sites_reporting]"
+                      dataType="ui4"
+                      name="number_of_sites_reporting" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[created]"
+                      dataType="date"
+                      name="created" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[last_updated]"
+                      dataType="date"
+                      name="last_updated" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import state_aqi to Source DB\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[state_aqi]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import state_aqi to Source DB\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALEX.AirPollution]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALEX.AirPollution]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_site]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="defining_site"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_site]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_site]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="date"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_parameter]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="defining_parameter"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[defining_parameter]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_code]"
+                      cachedDataType="ui4"
+                      cachedName="state_code"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_code]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[county_code]"
+                      cachedDataType="ui4"
+                      cachedName="county_code"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_code]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_code]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[county_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county_name"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_name]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_name]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aqi]"
+                      cachedDataType="ui4"
+                      cachedName="aqi"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aqi]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[aqi]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[category]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="category"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[category]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[number_of_sites_reporting]"
+                      cachedDataType="ui4"
+                      cachedName="number_of_sites_reporting"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[number_of_sites_reporting]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[number_of_sites_reporting]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created]"
+                      cachedDataType="date"
+                      cachedName="created"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[created]" />
+                    <inputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_updated]"
+                      cachedDataType="date"
+                      cachedName="last_updated"
+                      externalMetadataColumnId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
+                      lineageId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[last_updated]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state_name" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_site]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="defining_site" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="defining_parameter" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code]"
+                      dataType="i4"
+                      name="state_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_code]"
+                      dataType="i4"
+                      name="county_code" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="county_name" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aqi]"
+                      dataType="i4"
+                      name="aqi" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="category" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[number_of_sites_reporting]"
+                      dataType="i4"
+                      name="number_of_sites_reporting" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created]"
+                      dataType="dbTimeStamp2"
+                      name="created"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
+                      dataType="dbTimeStamp2"
+                      name="last_updated"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import state_aqi to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import state_aqi to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import state_aqi to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import state_aqi to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import state_aqi to Source DB.Paths[Flat File Source Output]"
+              endId="Package\Import state_aqi to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Import state_aqi to Source DB\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Import uscounties to Source DB"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9C6170B0-1BF2-41E5-B1E0-5B857941CBE5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import uscounties to Source DB"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import uscounties to Source DB\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[county]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[county_ascii]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county_ascii"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[county_full]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county_full"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[county_fips]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="county_fips"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[state_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="state_id"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[lat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lat"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[lng]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lng"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input].Columns[population]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="population"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county]"
+                      name="Copy of county"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_ascii]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_ascii]"
+                      name="Copy of county_ascii"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_full]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_full]"
+                      name="Copy of county_full"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_fips]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_fips]"
+                      name="Copy of county_fips"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_id]"
+                      name="Copy of state_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_name]"
+                      name="Copy of state_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lat]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lat]"
+                      name="Copy of lat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lng]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lng]"
+                      name="Copy of lng"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of population]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of population]"
+                      name="Copy of population"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import uscounties to Source DB\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[county]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(county,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[county_ascii]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county_ascii"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(county_ascii,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[county_full]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="county_full"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(county_full,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[county_fips]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="county_fips"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(county_fips,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[state_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="state_id"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(state_id,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(state_name,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[lat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lat"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(lat,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[lng]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lng"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(lng,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input].Columns[population]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="population"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]},"\"","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(population,"\"","")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import uscounties to Source DB\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import uscounties to Source DB\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[uscounties csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[uscounties csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county]"
+                      name="county"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_ascii&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_ascii]"
+                      name="county_ascii"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_full&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_full]"
+                      name="county_full"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_fips&quot;]"
+                      length="10"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[county_fips]"
+                      name="county_fips"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;state_id&quot;]"
+                      length="10"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_id]"
+                      name="state_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;state_name&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[state_name]"
+                      name="state_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;lat&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lat]"
+                      name="lat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;lng&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[lng]"
+                      name="lng"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;population&quot;]"
+                      length="50"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].Columns[population]"
+                      name="population"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;county&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_ascii&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;county_ascii&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_full&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;county_full&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;county_fips&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="&quot;county_fips&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;state_id&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="&quot;state_id&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;state_name&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;state_name&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;lat&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;lat&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;lng&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;lng&quot;" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[&quot;population&quot;]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="&quot;population&quot;" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import uscounties to Source DB\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[uscounties]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import uscounties to Source DB\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALEX.AirPollution]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALEX.AirPollution]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of county_fips]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Copy of county_fips"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_fips]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_fips]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of county]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of county"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of county_ascii]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of county_ascii"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_ascii]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_ascii]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of county_full]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of county_full"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_full]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of county_full]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of state_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Copy of state_id"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_id]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_id]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of state_name"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of state_name]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of lat]"
+                      cachedDataType="r4"
+                      cachedName="Copy of lat"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lat]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lat]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of lng]"
+                      cachedDataType="r4"
+                      cachedName="Copy of lng"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lng]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of lng]" />
+                    <inputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of population]"
+                      cachedDataType="ui4"
+                      cachedName="Copy of population"
+                      externalMetadataColumnId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[population]"
+                      lineageId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of population]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_fips]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="county_fips" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="county" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_ascii]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="county_ascii" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[county_full]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="county_full" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="state_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state_name" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lat]"
+                      dataType="r8"
+                      name="lat" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lng]"
+                      dataType="r8"
+                      name="lng" />
+                    <externalMetadataColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[population]"
+                      dataType="i4"
+                      name="population" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import uscounties to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import uscounties to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import uscounties to Source DB\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import uscounties to Source DB.Paths[Data Conversion Output]"
+              endId="Package\Import uscounties to Source DB\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Import uscounties to Source DB\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Import uscounties to Source DB.Paths[Derived Column Output]"
+              endId="Package\Import uscounties to Source DB\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Import uscounties to Source DB\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import uscounties to Source DB.Paths[Flat File Source Output]"
+              endId="Package\Import uscounties to Source DB\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Import uscounties to Source DB\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8CD047C0-E181-44A1-80E7-E9FDC4BE5329}"
+      DTS:From="Package\Import uscounties to Source DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Import state_aqi to Source DB" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\Import state_aqi to Source DB"
+          TopLeft="398.571429419883,130.764705767733" />
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\Import uscounties to Source DB"
+          TopLeft="111.428571665774,130.764705767733" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="340.228571665774,151.564705767733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.342857754109,0"
+              Start="0,0"
+              End="50.842857754109,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.842857754109,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Import state_aqi to Source DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import state_aqi to Source DB\OLE DB Destination"
+          TopLeft="60,189.41176617723" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Import state_aqi to Source DB\Flat File Source"
+          TopLeft="74.428571323048,60" />
+        <EdgeLayout
+          Id="Package\Import state_aqi to Source DB.Paths[Flat File Source Output]"
+          TopLeft="147.414285661524,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.81176617723"
+              Start="0,0"
+              End="0,80.31176617723">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.31176617723" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import state_aqi to Source DB\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import uscounties to Source DB">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Import uscounties to Source DB\Flat File Source"
+          TopLeft="168.571428930273,66.5294117063902" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Import uscounties to Source DB\Derived Column"
+          TopLeft="163.971428472594,140.705882229607" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Import uscounties to Source DB\Data Conversion"
+          TopLeft="166.828571335819,220.999999806285" />
+        <EdgeLayout
+          Id="Package\Import uscounties to Source DB.Paths[Flat File Source Output]"
+          TopLeft="242.071428701434,108.12941170639">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.5764705232168"
+              Start="0,0"
+              End="0,25.0764705232168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.0764705232168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import uscounties to Source DB\OLE DB Destination"
+          TopLeft="153.571428898342,303.588235028011" />
+        <EdgeLayout
+          Id="Package\Import uscounties to Source DB.Paths[Derived Column Output]"
+          TopLeft="242.399999904207,182.305882229607">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.6941175766784"
+              Start="0,0"
+              End="0,31.1941175766784">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.1941175766784" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import uscounties to Source DB.Paths[Data Conversion Output]"
+          TopLeft="241.600000117081,262.599999806285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9882352217253"
+              Start="0,0"
+              End="0,33.4882352217253">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4882352217253" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import uscounties to Source DB\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

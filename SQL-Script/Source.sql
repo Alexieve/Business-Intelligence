@@ -1,13 +1,13 @@
 USE master
 GO
 
---DROP DATABASE AirPollution_Stage
+--DROP DATABASE AirPollution
 --GO
 
-CREATE DATABASE AirPollution_Stage
+CREATE DATABASE AirPollution
 GO
 
-USE AirPollution_Stage
+USE AirPollution
 GO
 
 CREATE TABLE uscounties(
@@ -20,8 +20,6 @@ CREATE TABLE uscounties(
 	lat float NOT NULL,
 	lng float NOT NULL,
 	population int NOT NULL,
-	created datetime2(7) NOT NULL,
-	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_uscounties PRIMARY KEY CLUSTERED (county_fips)
 )
 

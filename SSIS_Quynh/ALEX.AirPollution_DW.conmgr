@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ALEX.AirPollution_DW"
+  DTS:DTSID="{39207D13-8156-4B18-91F0-A6F2EECEE0CC}"
+  DTS:CreationName="ADO">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=ALEX;Initial Catalog=AirPollution_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-SSIS-{39207D13-8156-4B18-91F0-A6F2EECEE0CC}ALEX.AirPollution_DW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
