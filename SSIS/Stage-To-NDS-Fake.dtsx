@@ -1,0 +1,1154 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2024 4:31:35 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-7UFG86B"
+  DTS:CreatorName="DESKTOP-7UFG86B\ASUS"
+  DTS:DTSID="{4FE42585-365A-420C-AD8E-D0386BE063FF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="4105"
+  DTS:ObjectName="Stage-To-NDS-Fake"
+  DTS:PackageType="5"
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{62E05E99-7E8A-421F-98E9-D6D513D293F6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2B6E66A5-B97E-422F-BBE8-8985FCECEE11}"
+      DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_NDS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Stage-To-NDS-{2B6E66A5-B97E-422F-BBE8-8985FCECEE11}DESKTOP-7UFG86B.AirPollution_NDS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C118116E-6A37-430E-8121-D4083430B8CD}"
+      DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_NDS 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Stage-To-NDS-{C118116E-6A37-430E-8121-D4083430B8CD}DESKTOP-7UFG86B.AirPollution_NDS 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5A7FBC59-5FB7-4770-9AA6-E68D9809493A}"
+      DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_Stage 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_Stage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5A7FBC59-5FB7-4770-9AA6-E68D9809493A}DESKTOP-7UFG86B.AirPollution_Stage 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4E18C991-9DAB-40DF-BEEA-706C54499AFA}"
+      DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_Stage 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_Stage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4E18C991-9DAB-40DF-BEEA-706C54499AFA}DESKTOP-7UFG86B.AirPollution_Stage 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_Stage1 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{82A4E15C-6163-432A-B758-346A2F8C7755}"
+      DTS:ObjectName="DESKTOP-7UFG86B.AirPollution_Stage1 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-7UFG86B;Initial Catalog=AirPollution_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Stage-To-NDS-{82A4E15C-6163-432A-B758-346A2F8C7755}DESKTOP-7UFG86B.AirPollution_Stage1 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{11B5EAF0-7F9E-4630-9D8E-8BA5B3B9B2E3}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="4105"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\1\Business-Intelligence\Data\uscounties.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county&quot;"
+              DTS:DTSID="{4D26A213-72E4-4C5C-B0D4-7D1B0BBAD2C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_ascii&quot;"
+              DTS:DTSID="{D030A575-809C-4E16-B93E-7250EB36212A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_full&quot;"
+              DTS:DTSID="{47105EAE-F7FF-4126-A0DC-C324BFBF8F08}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;county_fips&quot;"
+              DTS:DTSID="{D382EFC0-0E45-4465-B742-977E9892E217}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_id&quot;"
+              DTS:DTSID="{2859D869-AAC4-4073-B73A-F1148B2BF4BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;state_name&quot;"
+              DTS:DTSID="{0EAA2C86-E9A1-42BA-8753-9618AEC466B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lat&quot;"
+              DTS:DTSID="{D82BCD67-6ED5-4D19-B12F-26025CCB8C4E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;lng&quot;"
+              DTS:DTSID="{048F2EF7-BBB7-42C5-A15F-FEDBB7482E28}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="&quot;population&quot;"
+              DTS:DTSID="{396BED37-69C9-4871-AB41-460F45F35873}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dataset AQI_Category_NDS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{20778355-3e8b-405f-8cc4-db993d97e09b}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dataset AQI_Category_NDS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dataset AQI_Category_NDS\Insert dataset"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Insert dataset"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">INSERT INTO AQI_Category_NDS (category_name, aqi_min_value, aqi_max_value, description, created_date, modified_date)
+VALUES 
+    ('Good', 0, 50, 'Air quality is satisfactory, and air pollution poses little or no risk.', GETDATE(), GETDATE()),
+    ('Moderate', 51, 100, 'Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.', GETDATE(), GETDATE()),
+    ('Unhealthy for Sensitive Groups', 101, 150, 'Members of sensitive groups may experience health effects. The general public is less likely to be affected.', GETDATE(), GETDATE()),
+    ('Unhealthy', 151, 200, 'Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.', GETDATE(), GETDATE()),
+    ('Very Unhealthy', 201, 300, 'Health alert: The risk of health effects is increased for everyone.', GETDATE(), GETDATE()),
+    ('Hazardous', 301, 500, 'Health warning of emergency conditions: everyone is more likely to be affected.', GETDATE(), GETDATE());
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dataset AQI_Category_NDS\Insert dataset.Connections[OleDbConnection]"
+                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  connectionManagerRefId="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dataset AQI_Category_NDS\Insert dataset.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Dataset AQI_Category_NDS\Insert dataset.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Dataset AQI_Category_NDS\Insert dataset.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\Insert dataset.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dataset AQI_Category_NDS\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[AQI_Category_NDS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_SK]"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_SK]"
+                      name="category_SK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
+                      length="50"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[category_name]"
+                      name="category_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[aqi_min_value]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aqi_min_value]"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[aqi_min_value]"
+                      name="aqi_min_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[aqi_max_value]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aqi_max_value]"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[aqi_max_value]"
+                      name="aqi_max_value"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      length="255"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_date]"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[created_date]"
+                      name="created_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[modified_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].Columns[modified_date]"
+                      name="modified_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_SK]"
+                      dataType="i4"
+                      name="category_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="category_name" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aqi_min_value]"
+                      dataType="i4"
+                      name="aqi_min_value" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[aqi_max_value]"
+                      dataType="i4"
+                      name="aqi_max_value" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="description" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[created_date]"
+                      dataType="dbTimeStamp"
+                      name="created_date" />
+                    <externalMetadataColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
+                      dataType="dbTimeStamp"
+                      name="modified_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_SK]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_SK]"
+                      name="category_SK" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[category_name]"
+                      name="category_name" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aqi_min_value]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aqi_min_value]"
+                      name="aqi_min_value" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aqi_max_value]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[aqi_max_value]"
+                      name="aqi_max_value" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[description]"
+                      name="description" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[created_date]"
+                      name="created_date" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modified_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[modified_date]"
+                      name="modified_date" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dataset AQI_Category_NDS.Paths[OLE DB Source Output]"
+              endId="Package\Dataset AQI_Category_NDS\Insert dataset.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\Dataset AQI_Category_NDS\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Để tạm nơi xử lí case trùng ID"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{203525AA-D4BA-4853-A6C7-9D9931604B75}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Để tạm nơi xử lí case trùng ID"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT state_code_SK
+FROM State_NDS
+WHERE state_code_NK = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="state_code_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS 2]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE State_NDS 
+SET state_name = ?, 
+state_id = ?,
+created_date = ?,
+modified_date = ?
+WHERE state_code_nk = ? and state_code_SK = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  connectionManagerRefId="{38B17157-7BC3-46C5-8E74-D6236C7A016E}:invalid"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_code_NK]"
+                      cachedDataType="i4"
+                      cachedName="state_code_NK"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\241:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_code_SK]"
+                      cachedDataType="i4"
+                      cachedName="state_code_SK"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\242:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="state_id"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\243:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].Columns[state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\244:invalid" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="dbTimeStamp"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="dbTimeStamp"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[State_NDS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-7UFG86B.AirPollution_NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_code_NK]"
+                      cachedDataType="i4"
+                      cachedName="state_code_NK"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code_NK]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\241:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\244:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[state_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="state_id"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_id]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\243:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="created_date"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\245:invalid" />
+                    <inputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[modified_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modified_date"
+                      externalMetadataColumnId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modified_date]"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\246:invalid" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code_SK]"
+                      dataType="i4"
+                      name="state_code_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_code_NK]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="state_code_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state_id" />
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="state_name" />
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
+                      dataType="dbTimeStamp"
+                      name="created_date" />
+                    <externalMetadataColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modified_date]"
+                      dataType="dbTimeStamp"
+                      name="modified_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Để tạm nơi xử lí case trùng ID.Paths[Lookup Match Output]"
+              endId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Để tạm nơi xử lí case trùng ID.Paths[Lookup No Match Output]"
+              endId="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Để tạm nơi xử lí case trùng ID\Lookup 1.Outputs[Lookup No Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Dataset AQI_Category_NDS"
+          TopLeft="224.16665441874,244.599999005596" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\Để tạm nơi xử lí case trùng ID"
+          TopLeft="224.16665441874,142.999999005596" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dataset AQI_Category_NDS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Dataset AQI_Category_NDS\Insert dataset"
+          TopLeft="367.999995410442,219.999997615814" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Dataset AQI_Category_NDS\OLE DB Source"
+          TopLeft="363.999994575977,100.999998494983" />
+        <EdgeLayout
+          Id="Package\Dataset AQI_Category_NDS.Paths[OLE DB Source Output]"
+          TopLeft="439.39999499321,142.599998494983">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.3999991208315"
+              Start="0,0"
+              End="0,69.8999991208315">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.8999991208315" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Để tạm nơi xử lí case trùng ID">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Để tạm nơi xử lí case trùng ID\OLE DB Destination"
+          TopLeft="593.99999204278,61.9999999701976" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Để tạm nơi xử lí case trùng ID\Lookup 1"
+          TopLeft="339.666650114788,63.0666689818438" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Để tạm nơi xử lí case trùng ID\OLE DB Command"
+          TopLeft="60,60" />
+        <EdgeLayout
+          Id="Package\Để tạm nơi xử lí case trùng ID.Paths[Lookup Match Output]"
+          TopLeft="339.666650114788,82.3333344909219">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-112.466650114788,0"
+              Start="0,0"
+              End="-104.966650114788,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-104.966650114788,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-109.543364119894,5,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Để tạm nơi xử lí case trùng ID.Paths[Lookup No Match Output]"
+          TopLeft="460.466650114788,83.3333344760208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.533341927992,0"
+              Start="0,0"
+              End="126.033341927992,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.033341927992,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-1.65836809850407,5,129.350078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
