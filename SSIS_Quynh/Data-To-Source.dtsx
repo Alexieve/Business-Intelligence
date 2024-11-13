@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{7BAF06BE-3A65-48E0-87E5-267252EBEC79}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{2AB75367-2E8C-41B1-9CB9-B316C412732F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2175,6 +2175,10 @@
           Id="Package\Import uscounties to Source DB\Flat File Source"
           TopLeft="168.571428930273,66.5294117063902" />
         <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Import uscounties to Source DB\OLE DB Destination"
+          TopLeft="153.571428898342,303.588235028011" />
+        <NodeLayout
           Size="152.8,41.6"
           Id="Package\Import uscounties to Source DB\Derived Column"
           TopLeft="163.971428472594,140.705882229607" />
@@ -2204,10 +2208,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Import uscounties to Source DB\OLE DB Destination"
-          TopLeft="153.571428898342,303.588235028011" />
         <EdgeLayout
           Id="Package\Import uscounties to Source DB.Paths[Derived Column Output]"
           TopLeft="242.399999904207,182.305882229607">

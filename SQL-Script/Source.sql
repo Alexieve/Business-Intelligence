@@ -1,8 +1,9 @@
 USE master
 GO
 
---DROP DATABASE AirPollution
---GO
+IF DB_ID('AirPollution') IS NOT NULL
+	DROP DATABASE AirPollution;
+GO
 
 CREATE DATABASE AirPollution
 GO

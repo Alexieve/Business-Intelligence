@@ -1,8 +1,10 @@
 USE master
 GO
 
---DROP DATABASE AirPollution_NDS
---GO
+IF DB_ID('AirPollution_NDS') IS NOT NULL
+	DROP DATABASE AirPollution_NDS;
+GO
+
 
 CREATE DATABASE AirPollution_NDS
 GO
@@ -16,7 +18,7 @@ CREATE TABLE State_NDS(
 	state_id varchar(5) NULL,
 	state_name varchar(50) NOT NULL,
 	created_date datetime2(7) NOT NULL,
-	modified_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_State_NDS PRIMARY KEY CLUSTERED (state_SK)
 )
 
@@ -29,7 +31,7 @@ CREATE TABLE County_NDS(
 	county_ascii varchar(50) NOT NULL,
 	county_fips_NK varchar(5) NULL,
 	created_date datetime2(7) NOT NULL,
-	modified_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_County_NDS PRIMARY KEY CLUSTERED (county_SK)
 )
 
@@ -39,7 +41,7 @@ CREATE TABLE Site_NDS(
 	site_code int NOT NULL,
 	defining_site_NK VARCHAR(11) NOT NULL,
 	created_date datetime2(7) NOT NULL,
-	modified_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_Site_NDS PRIMARY KEY CLUSTERED (site_SK)
 )
 
@@ -50,7 +52,7 @@ CREATE TABLE AQI_Category_NDS(
 	aqi_max_value int NOT NULL,
 	description varchar(255) NOT NULL,
 	created_date datetime2(7) NOT NULL,
-	modified_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_AQI_Category_NDS PRIMARY KEY CLUSTERED (category_SK)
 )
 
@@ -63,7 +65,7 @@ CREATE TABLE Monitor_NDS(
 	category_SK int NOT NULL,
 	number_of_sites_reporting int NOT NULL,
 	created_date datetime2(7) NOT NULL,
-	modified_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_Monitor_NDS PRIMARY KEY CLUSTERED(monitor_SK)
 )
 

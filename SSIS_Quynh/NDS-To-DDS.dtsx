@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="NDS-To-DDS"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{13930250-D6EE-4EB5-9618-8C6F9F845DFA}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{5585AE72-7F71-47DE-A1BD-C372FF585F9F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -83,7 +83,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -108,7 +108,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -430,12 +430,12 @@
                           externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
                           lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[created_date]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].Columns[last_updated]"
                           cachedDataType="dbTimeStamp2"
-                          cachedName="modified_date"
+                          cachedName="last_updated"
                           cachedScale="7"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifed_date]"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[modified_date]" />
+                          externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[last_updated]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -482,9 +482,9 @@
                           dataType="dbTimeStamp"
                           name="created_date" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifed_date]"
+                          refId="Package\Sequence Container\Push data into Dim_Site\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
                           dataType="dbTimeStamp"
-                          name="modifed_date" />
+                          name="last_updated" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -547,7 +547,7 @@
 		ST.state_name,
 		C.county_name,
 		S.created_date,
-		S.modified_date
+		S.last_updated
 FROM State_NDS ST
 JOIN County_NDS C
 	ON ST.state_SK = C.state_SK
@@ -555,7 +555,7 @@ JOIN Site_NDS S
 	ON C.county_SK = S.county_SK
 WHERE
 	(S.created_date &gt; ? AND S.created_date &lt;= ?)
-	OR (S.modified_date &gt; ? AND S.modified_date &lt;= ?)</property>
+	OR (S.last_updated &gt; ? AND S.last_updated &lt;= ?)</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -662,16 +662,6 @@ WHERE
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]"
-                          dataType="dbTimeStamp2"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]"
-                          name="modified_date"
-                          scale="7"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[site_SK]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -679,6 +669,16 @@ WHERE
                           externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[site_SK]"
                           lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[site_SK]"
                           name="site_SK"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[last_updated]"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]"
+                          name="last_updated"
+                          scale="7"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -719,14 +719,14 @@ WHERE
                           name="created_date"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
-                          dataType="dbTimeStamp2"
-                          name="modified_date"
-                          scale="7" />
-                        <externalMetadataColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[site_SK]"
                           dataType="i4"
                           name="site_SK" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].ExternalColumns[last_updated]"
+                          dataType="dbTimeStamp2"
+                          name="last_updated"
+                          scale="7" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -782,10 +782,10 @@ WHERE
                           name="created_date"
                           scale="7" />
                         <outputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Error Output].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Error Output].Columns[last_updated]"
                           dataType="dbTimeStamp2"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Error Output].Columns[modified_date]"
-                          name="modified_date"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Error Output].Columns[last_updated]"
+                          name="last_updated"
                           scale="7" />
                         <outputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -934,7 +934,7 @@ WHERE
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Site] SET [county_code_NK] = ?,[county_name] = ?,[created_date] = ?,[modifed_date] = ?,[site_code_NK] = ?,[state_code_NK] = ?,[state_id] = ?,[state_name] = ? WHERE [site_SK] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Site] SET [county_code_NK] = ?,[county_name] = ?,[created_date] = ?,[last_updated] = ?,[site_code_NK] = ?,[state_code_NK] = ?,[state_id] = ?,[state_name] = ? WHERE [site_SK] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -978,12 +978,12 @@ WHERE
                           externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[created_date]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Dim_Site\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[last_updated]"
                           cachedDataType="dbTimeStamp2"
-                          cachedName="modified_date"
+                          cachedName="last_updated"
                           cachedScale="7"
                           externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]" />
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]" />
                         <inputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[site_code]"
                           cachedDataType="i4"
@@ -1173,7 +1173,7 @@ WHERE
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [county_name], [site_SK], [state_id], [state_name],[status] FROM [dbo].[Dim_Site]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [county_name], [site_SK], [state_name],[status] FROM [dbo].[Dim_Site]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1250,21 +1250,6 @@ WHERE
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[state_id]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="state_id"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[state_id]"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[state_id]">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              name="ColumnType"
-                              typeConverter="ColumnType">3</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[state_name]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -1292,12 +1277,6 @@ WHERE
                           refId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[site_SK]"
                           dataType="i4"
                           name="site_SK" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[state_id]"
-                          codePage="1252"
-                          dataType="str"
-                          length="5"
-                          name="state_id" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[state_name]"
                           codePage="1252"
@@ -1473,20 +1452,6 @@ WHERE
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 1].Columns[modified_date]"
-                          cachedDataType="dbTimeStamp2"
-                          cachedName="modified_date"
-                          cachedScale="7"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[modified_date]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 1].Columns[site_SK]"
                           cachedDataType="i4"
                           cachedName="site_SK"
@@ -1497,6 +1462,20 @@ WHERE
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[site_SK]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 1].Columns[last_updated]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="last_updated"
+                          cachedScale="7"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[last_updated]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -1606,20 +1585,6 @@ WHERE
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 2].Columns[modified_date]"
-                          cachedDataType="dbTimeStamp2"
-                          cachedName="modified_date"
-                          cachedScale="7"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Output column lineage ID"
-                              name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[modified_date]}</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 2].Columns[site_SK]"
                           cachedDataType="i4"
                           cachedName="site_SK"
@@ -1630,6 +1595,20 @@ WHERE
                               dataType="System.Int32"
                               description="Output column lineage ID"
                               name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[site_SK]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Inputs[Union All Input 2].Columns[last_updated]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="last_updated"
+                          cachedScale="7"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[last_updated]}</property>
                           </properties>
                         </inputColumn>
                       </inputColumns>
@@ -1691,16 +1670,16 @@ WHERE
                           name="created_date"
                           scale="7" />
                         <outputColumn
-                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[modified_date]"
-                          dataType="dbTimeStamp2"
-                          lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[modified_date]"
-                          name="modified_date"
-                          scale="7" />
-                        <outputColumn
                           refId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[site_SK]"
                           dataType="i4"
                           lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[site_SK]"
                           name="site_SK" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[last_updated]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\Sequence Container\Push data into Dim_Site\Union All.Outputs[Union All Output 1].Columns[last_updated]"
+                          name="last_updated"
+                          scale="7" />
                       </outputColumns>
                       <externalMetadataColumns />
                     </output>
@@ -1799,7 +1778,7 @@ WHERE
 		M.aqi,
 		AQI_Category_NDS.category_name,
 		M.created_date,
-		M.modified_date
+		M.last_updated
 FROM Monitor_NDS M
 	JOIN AirPollution_DDS.dbo.Dim_Date 
 	ON M.date = Dim_Date.full_date
@@ -1807,7 +1786,7 @@ FROM Monitor_NDS M
 	ON M.category_SK = AQI_Category_NDS.category_SK
 WHERE
 	(M.created_date &gt; ? AND M.created_date &lt;= ?)
-	OR (M.modified_date &gt; ? AND M.modified_date &lt;= ?)</property>
+	OR (M.last_updated &gt; ? AND M.last_updated &lt;= ?)</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -1912,13 +1891,13 @@ WHERE
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[last_updated]"
                           dataType="dbTimeStamp2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
-                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[modified_date]"
-                          name="modified_date"
+                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].ExternalColumns[last_updated]"
+                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[last_updated]"
+                          name="last_updated"
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
@@ -1958,9 +1937,9 @@ WHERE
                           name="created_date"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].ExternalColumns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].ExternalColumns[last_updated]"
                           dataType="dbTimeStamp2"
-                          name="modified_date"
+                          name="last_updated"
                           scale="7" />
                       </externalMetadataColumns>
                     </output>
@@ -2010,10 +1989,10 @@ WHERE
                           name="created_date"
                           scale="7" />
                         <outputColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Error Output].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Error Output].Columns[last_updated]"
                           dataType="dbTimeStamp2"
-                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Error Output].Columns[modified_date]"
-                          name="modified_date"
+                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Error Output].Columns[last_updated]"
+                          name="last_updated"
                           scale="7" />
                         <outputColumn
                           refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -2152,12 +2131,12 @@ WHERE
                           externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter_DD]"
                           lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[defining_parameter]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[modified_date]"
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_updated]"
                           cachedDataType="dbTimeStamp2"
-                          cachedName="modified_date"
+                          cachedName="last_updated"
                           cachedScale="7"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifed_date]"
-                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[modified_date]" />
+                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
+                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[last_updated]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2194,9 +2173,9 @@ WHERE
                           dataType="dbTimeStamp"
                           name="created_date" />
                         <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifed_date]"
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
                           dataType="dbTimeStamp"
-                          name="modifed_date" />
+                          name="last_updated" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2257,7 +2236,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2274,7 +2253,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2291,7 +2270,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2308,7 +2287,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2380,43 +2359,13 @@ WHERE
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Set CET for Dim_Site"
-          TopLeft="71.4285715806241,58.8823528895638" />
-        <NodeLayout
           Size="216,41.6"
           Id="Package\Select LSET, CET of Dim_Site"
           TopLeft="47.8571429590181,169.764705733548" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="157.842857269821,100.482352889564">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69.2823528439838"
-              Start="0,0"
-              End="0,61.7823528439838">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.7823528439838" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="182.4,41.6"
-          Id="Package\Set LSET for Dim_Site"
-          TopLeft="41.4285715167619,561.32941127338" />
-        <NodeLayout
-          Size="224.8,41.6"
-          Id="Package\Set LSET for Fact_AQI_Monitor"
-          TopLeft="508.571429654044,569.588234868481" />
+          Size="259.2,41.6"
+          Id="Package\Select LSET, CET of Fact_AQI_Monitor"
+          TopLeft="400.000000851495,170.070588122685" />
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\Sequence Container\Push data into Dim_Site"
@@ -2454,6 +2403,44 @@ WHERE
           Size="385.6,240"
           Id="Package\Sequence Container"
           TopLeft="129.28571456093,263.364705687968" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Set CET for Dim_Site"
+          TopLeft="71.4285715806241,58.8823528895638" />
+        <NodeLayout
+          Size="220,41.6"
+          Id="Package\Set CET for Fact_AQI_Monitor"
+          TopLeft="414.28571516762,57.6588235153356" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Set LSET for Dim_Site"
+          TopLeft="41.4285715167619,561.32941127338" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Set LSET for Fact_AQI_Monitor"
+          TopLeft="508.571429654044,569.588234868481" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="157.842857269821,100.482352889564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.2823528439838"
+              Start="0,0"
+              End="0,61.7823528439838">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.7823528439838" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="155.857142959018,211.364705733548">
@@ -2488,14 +2475,6 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="220,41.6"
-          Id="Package\Set CET for Fact_AQI_Monitor"
-          TopLeft="414.28571516762,57.6588235153356" />
-        <NodeLayout
-          Size="259.2,41.6"
-          Id="Package\Select LSET, CET of Fact_AQI_Monitor"
-          TopLeft="400.000000851495,170.070588122685" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="526.942858009557,99.2588235153356">
@@ -2629,13 +2608,13 @@ WHERE
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="316,41.6"
-          Id="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS"
-          TopLeft="72.9,5.49999999999995" />
-        <NodeLayout
           Size="208,41.6"
           Id="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension"
           TopLeft="126.9,107.1" />
+        <NodeLayout
+          Size="316,41.6"
+          Id="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS"
+          TopLeft="72.9,5.49999999999995" />
         <EdgeLayout
           Id="Package\Sequence Container\Push data into Dim_Site.Paths[OLE DB Source Output]"
           TopLeft="230.9,47.1">
@@ -2894,52 +2873,6 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="363.2,41.6"
-          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS"
-          TopLeft="130.666664719582,40.3333327323198" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination"
-          TopLeft="230.666663229466,153.333331048489" />
-        <EdgeLayout
-          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor.Paths[OLE DB Source Output]"
-          TopLeft="314.066663974524,81.9333327323198">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71.3999983161688"
-              Start="0,0"
-              End="0,63.8999983161688">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.8999983161688" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Push data into Dim_Site\Slowly Changing Dimension">
     <Properties>
       <Property>
@@ -2969,8 +2902,8 @@ WHERE
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[modified_date]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;modifed_date&lt;/ColumnName&gt;
+      &lt;IdentificationString&gt;Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[last_updated]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;last_updated&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
       &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
@@ -2996,7 +2929,7 @@ WHERE
       &lt;IdentificationString&gt;Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[state_id]&lt;/IdentificationString&gt;
       &lt;ColumnName&gt;state_id&lt;/ColumnName&gt;
       &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
     &lt;/InputColumnToDBColumn&gt;
     &lt;InputColumnToDBColumn&gt;
       &lt;IdentificationString&gt;Join data from State_NDS, County_NDS, Site_NDS.Outputs[OLE DB Source Output].Columns[state_name]&lt;/IdentificationString&gt;
@@ -3029,6 +2962,52 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Push data into Dim_Site\Join data from State_NDS, County_NDS, Site_NDS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination"
+          TopLeft="230.666663229466,153.333331048489" />
+        <NodeLayout
+          Size="363.2,41.6"
+          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS"
+          TopLeft="130.666664719582,40.3333327323198" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Push data into Fact_AQI_Monitor.Paths[OLE DB Source Output]"
+          TopLeft="314.066663974524,81.9333327323198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.3999983161688"
+              Start="0,0"
+              End="0,63.8999983161688">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.8999983161688" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS">
     <Properties>
       <Property>
@@ -3038,6 +3017,19 @@ WHERE
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Push data into Dim_Site\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

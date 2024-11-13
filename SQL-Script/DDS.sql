@@ -1,10 +1,12 @@
 USE master
 GO
 
-CREATE DATABASE AirPollution_DDS
+IF DB_ID('AirPollution_DDS') IS NOT NULL
+	DROP DATABASE AirPollution_DDS;
 GO
 
- DROP DATABASE AirPollution_DDS
+CREATE DATABASE AirPollution_DDS
+GO
 
 USE AirPollution_DDS
 GO
@@ -36,7 +38,7 @@ CREATE TABLE Dim_Site (
 	county_name VARCHAR(50),
 	status BIT,
 	created_date DATETIME,
-	modifed_date DATETIME,
+	last_updated DATETIME,
 );
 
 
@@ -49,7 +51,7 @@ CREATE TABLE Fact_AQI_Monitor (
 	aqi INT,
 	category_name VARCHAR(50),
 	created_date DATETIME,
-	modifed_date DATETIME,
+	last_updated DATETIME,
 )
 
 ALTER TABLE Fact_AQI_Monitor

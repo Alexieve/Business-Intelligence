@@ -21,8 +21,6 @@ CREATE TABLE uscounties(
 	lat float NOT NULL,
 	lng float NOT NULL,
 	population int NOT NULL,
-	created datetime2(7) NOT NULL,
-	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_uscounties PRIMARY KEY CLUSTERED (county_fips)
 )
 
