@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="NDS-To-DDS"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{5585AE72-7F71-47DE-A1BD-C372FF585F9F}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{B1DF5D27-6FB9-426D-82F4-90CABD3FE291}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -83,7 +83,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -108,7 +108,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2123,20 +2123,20 @@ WHERE
                           externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[created_date]"
                           lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[created_date]" />
                         <inputColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_parameter]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="defining_parameter"
-                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter_DD]"
-                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[defining_parameter]" />
-                        <inputColumn
                           refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[last_updated]"
                           cachedDataType="dbTimeStamp2"
                           cachedName="last_updated"
                           cachedScale="7"
                           externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
                           lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[last_updated]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_parameter]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="defining_parameter"
+                          externalMetadataColumnId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
+                          lineageId="Package\Sequence Container\Push data into Fact_AQI_Monitor\Join data from Monitor_NDS, Dim_Date, AQI_Category_NDS.Outputs[OLE DB Source Output].Columns[defining_parameter]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2152,12 +2152,6 @@ WHERE
                           refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[site_SK]"
                           dataType="i4"
                           name="site_SK" />
-                        <externalMetadataColumn
-                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter_DD]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="defining_parameter_DD" />
                         <externalMetadataColumn
                           refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aqi]"
                           dataType="i4"
@@ -2176,6 +2170,12 @@ WHERE
                           refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
                           dataType="dbTimeStamp"
                           name="last_updated" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="defining_parameter" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -2236,7 +2236,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2253,7 +2253,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2270,7 +2270,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for Dim_Site"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2287,7 +2287,7 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for Fact_AQI_Monitor"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2969,6 +2969,19 @@ WHERE
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Push data into Dim_Site\Insert Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor">
     <LayoutInfo>
@@ -3017,19 +3030,6 @@ WHERE
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\Push data into Fact_AQI_Monitor\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\Push data into Dim_Site\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

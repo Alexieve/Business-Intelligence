@@ -47,7 +47,7 @@ CREATE TABLE Fact_AQI_Monitor (
 	monitor_SK INT PRIMARY KEY CLUSTERED,
 	date_SK INT,
 	site_SK INT, 
-	defining_parameter_DD VARCHAR(50),
+	defining_parameter VARCHAR(50),
 	aqi INT,
 	category_name VARCHAR(50),
 	created_date DATETIME,

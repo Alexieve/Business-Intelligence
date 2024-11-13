@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{2AB75367-2E8C-41B1-9CB9-B316C412732F}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{1FE504DB-5746-4CEF-8301-A594429E2DB4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -159,6 +159,17 @@
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Test_Data_Profiling]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2EE81316-1C9C-42A5-A991-A0A7C1C9DCBF}"
+      DTS:ObjectName="Test_Data_Profiling">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="C:\Users\ASUS\Desktop\Test_Data_Profiling" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
