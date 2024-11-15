@@ -7,7 +7,6 @@ GO
 
 CREATE DATABASE AirPollution_Stage
 GO
-
 USE AirPollution_Stage
 GO
 
@@ -20,8 +19,7 @@ CREATE TABLE uscounties(
 	state_name varchar(50) NOT NULL,
 	lat float NOT NULL,
 	lng float NOT NULL,
-	population int NOT NULL,
-	CONSTRAINT PK_uscounties PRIMARY KEY CLUSTERED (county_fips)
+	population int NOT NULL
 )
 
 CREATE TABLE state_aqi(
@@ -36,8 +34,7 @@ CREATE TABLE state_aqi(
 	category varchar(50) NOT NULL,
 	number_of_sites_reporting int NOT NULL,
 	created datetime2(7) NOT NULL,
-	last_updated datetime2(7) NOT NULL,
-	CONSTRAINT PK_state_aqi PRIMARY KEY	CLUSTERED(date, defining_site)
- )
+	last_updated datetime2(7) NOT NULL
+)
 
- USE master
+USE master

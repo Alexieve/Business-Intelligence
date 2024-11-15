@@ -26,22 +26,21 @@ CREATE TABLE Dim_Date (
 	 CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED (date_SK ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
 ) ON [PRIMARY];
 
-
-
 CREATE TABLE Dim_Site (
     site_SK INT PRIMARY KEY CLUSTERED, -- Auto-increment and clustered index
-    state_code_NK INT,
-    county_code_NK INT,
-    site_code_NK INT,
+    state_SK INT,
+	county_SK INT,
+	source_id INT,
 	state_id VARCHAR(5),
+	state_code INT,
+    county_code INT,
+    site_code INT,
     state_name VARCHAR(50),
 	county_name VARCHAR(50),
 	status BIT,
 	created_date DATETIME,
 	last_updated DATETIME,
 );
-
-
 
 CREATE TABLE Fact_AQI_Monitor (
 	monitor_SK INT PRIMARY KEY CLUSTERED,
@@ -50,16 +49,14 @@ CREATE TABLE Fact_AQI_Monitor (
 	defining_parameter VARCHAR(50),
 	aqi INT,
 	category_name VARCHAR(50),
+	number_of_sites_reporting INT,
 	created_date DATETIME,
 	last_updated DATETIME,
+	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Date FOREIGN KEY (date_SK) 
+		REFERENCES Dim_Date(date_SK),
+	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Site FOREIGN KEY (site_SK) 
+		REFERENCES Dim_Site(site_SK)
 )
-
-ALTER TABLE Fact_AQI_Monitor
-ADD
-	FOREIGN KEY (date_SK) REFERENCES Dim_Date(date_SK),
-	FOREIGN KEY (site_SK) REFERENCES Dim_Site(site_SK);
-GO
-
 
  
 DECLARE @tmpDOW TABLE (DOW  INT, Cntr INT); --Table for counting DOW occurance in a month

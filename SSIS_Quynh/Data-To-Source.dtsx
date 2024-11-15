@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{1FE504DB-5746-4CEF-8301-A594429E2DB4}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{F4AEACA7-D27A-4B94-9908-E24D12D5264E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -54,7 +54,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="D:\Study\YEAR4\BI\Project\Data\state_aqi_full.csv">
+          DTS:ConnectionString="D:\Study\YEAR4\BI\Project\Data\state_aqi.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -63,7 +63,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state_name"
-              DTS:DTSID="{B1D95CED-F9CB-49CD-8F27-02F488868DDB}"
+              DTS:DTSID="{7E7DE542-33F9-4A8D-8E98-8B75F948A534}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -72,7 +72,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="county_name"
-              DTS:DTSID="{A3FA5C49-6E21-481B-8B04-D348FE7BE147}"
+              DTS:DTSID="{6CC95840-BEE6-4F9E-8F7D-5E8CDDBDECD7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -80,7 +80,7 @@
               DTS:DataType="19"
               DTS:TextQualified="True"
               DTS:ObjectName="state_code"
-              DTS:DTSID="{050C364B-1B51-4678-9D68-3AA5A2E39467}"
+              DTS:DTSID="{AA81F2CF-A45F-4855-B5F6-AE466AB78E2B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -88,7 +88,7 @@
               DTS:DataType="19"
               DTS:TextQualified="True"
               DTS:ObjectName="county_code"
-              DTS:DTSID="{E8D3B237-65D7-4B2A-8ED6-297C5B344EE3}"
+              DTS:DTSID="{8A39EDF8-D13F-4E5C-978B-625351FBC41E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -96,7 +96,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="date"
-              DTS:DTSID="{BC192AA1-7F08-48FC-8DC1-13A69D913A21}"
+              DTS:DTSID="{8924196E-3FD2-4309-BB30-FD76CC4DE6FD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -104,7 +104,7 @@
               DTS:DataType="19"
               DTS:TextQualified="True"
               DTS:ObjectName="aqi"
-              DTS:DTSID="{019ACBB9-EB3B-4E8F-8801-6105FBF08808}"
+              DTS:DTSID="{08CFB465-B656-4C16-8086-BC2BC8F57167}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +113,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="category"
-              DTS:DTSID="{EEF40891-12D8-422B-9470-3CDC9E2D9E9F}"
+              DTS:DTSID="{287E4C36-219B-4858-B5A5-EB944223DBFD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +122,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="defining_parameter"
-              DTS:DTSID="{1C5BBB59-C667-4FEB-8991-1AEEF745B6E9}"
+              DTS:DTSID="{18C2FF44-9151-4488-A9E3-3B7E591BCC29}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -131,7 +131,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="defining_site"
-              DTS:DTSID="{6919A2E9-A400-4755-91D8-ECC8E6815DAA}"
+              DTS:DTSID="{01F9EA7D-571E-43C1-A991-C72274E05A1B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -139,7 +139,7 @@
               DTS:DataType="19"
               DTS:TextQualified="True"
               DTS:ObjectName="number_of_sites_reporting"
-              DTS:DTSID="{6916A073-F088-4C67-9EBC-C20B807BE9ED}"
+              DTS:DTSID="{08827187-643F-4080-85A4-9C7392A40911}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -147,7 +147,7 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="created"
-              DTS:DTSID="{A6D9D1F5-FA16-40F7-B2CD-EE7BA6E60379}"
+              DTS:DTSID="{A361DDEF-919E-4C19-8029-5B10CA47EB84}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -155,21 +155,10 @@
               DTS:DataType="7"
               DTS:TextQualified="True"
               DTS:ObjectName="last_updated"
-              DTS:DTSID="{5385A737-15E6-4B8A-94B8-2A6AEC9EAC64}"
+              DTS:DTSID="{62289470-908B-4B4E-BEB7-D3022B870D72}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Test_Data_Profiling]"
-      DTS:CreationName="FILE"
-      DTS:DTSID="{2EE81316-1C9C-42A5-A991-A0A7C1C9DCBF}"
-      DTS:ObjectName="Test_Data_Profiling">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:FileUsageType="1"
-          DTS:ConnectionString="C:\Users\ASUS\Desktop\Test_Data_Profiling" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -2069,16 +2058,58 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate state_aqi"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{03d2ae16-67a9-4343-bfc1-fa49c5e2ab9c}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate state_aqi"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{22984B3D-C509-40ED-9FFF-7F0CD6EF8AA8}"
+          SQLTask:SqlStatementSource="truncate table state_aqi;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate uscounties"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1975B139-EAB5-48D4-81AD-02F88EFBACAE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate uscounties"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{22984B3D-C509-40ED-9FFF-7F0CD6EF8AA8}"
+          SQLTask:SqlStatementSource="truncate table uscounties;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{8CD047C0-E181-44A1-80E7-E9FDC4BE5329}"
-      DTS:From="Package\Import uscounties to Source DB"
+      DTS:DTSID="{67E1E8E6-592B-4DBE-909E-4593F0E9A4A1}"
+      DTS:From="Package\truncate state_aqi"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Import state_aqi to Source DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{93443CFA-D743-4818-BBA4-BEC6CD57DE0B}"
+      DTS:From="Package\truncate uscounties"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Import uscounties to Source DB" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2091,7 +2122,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Import state_aqi to Source DB"
@@ -2100,20 +2131,50 @@
           Size="228.8,41.6"
           Id="Package\Import uscounties to Source DB"
           TopLeft="111.428571665774,130.764705767733" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\truncate uscounties"
+          TopLeft="143.571428877054,26.7647058588927" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="340.228571665774,151.564705767733">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="227.300000271414,68.3647058588927">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="58.342857754109,0"
+              EndConnector="0,62.3999999088403"
               Start="0,0"
-              End="50.842857754109,0">
+              End="0,54.8999999088403">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="50.842857754109,0" />
+                    End="0,54.8999999088403" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\truncate state_aqi"
+          TopLeft="425.000000904713,27.5294117405753" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="508.185715162298,69.1294117405753">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.6352940271577"
+              Start="0,0"
+              End="0,54.1352940271577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.1352940271577" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2129,7 +2190,7 @@
     design-time-name="Package\Import state_aqi to Source DB">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Import state_aqi to Source DB\OLE DB Destination"
@@ -2137,27 +2198,29 @@
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Import state_aqi to Source DB\Flat File Source"
-          TopLeft="74.428571323048,60" />
+          TopLeft="72.9999998914355,58.4705882366347" />
         <EdgeLayout
           Id="Package\Import state_aqi to Source DB.Paths[Flat File Source Output]"
-          TopLeft="147.414285661524,101.6">
+          TopLeft="146.699999945718,100.070588236635">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,87.81176617723"
+              EndConnector="0,89.3411779405953"
               Start="0,0"
-              End="0,80.31176617723">
+              End="0,81.8411779405953">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,80.31176617723" />
+                    End="0,81.8411779405953" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.19765625,35.2990069390476,50.3953125,11.2431640625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2180,7 +2243,7 @@
     design-time-name="Package\Import uscounties to Source DB">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Import uscounties to Source DB\Flat File Source"
@@ -2216,7 +2279,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.1244140625,6.9239774491084,50.248828125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2238,7 +2303,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.1244140625,9.9828009758392,50.248828125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2260,7 +2327,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-25.1244140625,11.1298597983626,50.248828125,11.228515625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

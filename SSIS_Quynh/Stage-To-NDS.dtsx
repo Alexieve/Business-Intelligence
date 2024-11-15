@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stage-To-NDS"
   DTS:PackageType="5"
-  DTS:VersionBuild="182"
-  DTS:VersionGUID="{1E4D908C-81A5-457E-AC0A-4069AC74413C}">
+  DTS:VersionBuild="217"
+  DTS:VersionGUID="{6A5AF279-AD49-4592-93E4-7D0AD723923D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -145,51 +145,6 @@
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[test]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{02BF0D2D-C777-46EB-A637-470D29FF799C}"
-      DTS:ObjectName="test">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="1033"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\ASUS\Desktop\test.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="defining_site"
-              DTS:DTSID="{191CA643-CF23-43B1-8FD1-1EF4FCF478BE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="site_code"
-              DTS:DTSID="{90ECC0E1-5C90-45F3-88A8-C048A171B454}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="5"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="county_fips"
-              DTS:DTSID="{BE4C897D-2E6E-4B20-A1F1-0800C6E7AFA4}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
@@ -212,6 +167,23 @@
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Quality Firewall"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FCB3EA9A-28D7-4792-BB66-936977335FB3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Quality Firewall"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3541AEBD-8120-4663-A635-4759599DC921}"
+          SQLTask:SqlStatementSource="EXEC sp_data_quality_check;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Push data into County_NDS"
       DTS:CreationName="Microsoft.Pipeline"
@@ -342,7 +314,7 @@
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[State_NDS]) [refTable]
-where [refTable].[state_code_NK] = ?</property>
+where [refTable].[state_code_NK] = ? and [refTable].[source_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -373,12 +345,12 @@ where [refTable].[state_code_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_code_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_id" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_code_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_id" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[state_code]};</property>
+                  name="ParameterMap">#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[state_code]};#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -411,6 +383,22 @@ where [refTable].[state_code_NK] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">state_code_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into County_NDS\Add state_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -696,6 +684,28 @@ where [refTable].[state_code_NK] = ?</property>
                           name="FriendlyExpression">(DT_STR,5,1252)(ISNULL(county_fips_1) ? county_fips_2 : county_fips_1)</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]"
+                      name="source_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -852,6 +862,12 @@ where [refTable].[state_code_NK] = ?</property>
                       cachedName="county_fips"
                       externalMetadataColumnId="Package\Push data into County_NDS\Insert new County.Inputs[OLE DB Destination Input].ExternalColumns[county_fips_NK]"
                       lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[county_fips]" />
+                    <inputColumn
+                      refId="Package\Push data into County_NDS\Insert new County.Inputs[OLE DB Destination Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into County_NDS\Insert new County.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -901,6 +917,10 @@ where [refTable].[state_code_NK] = ?</property>
                       dataType="dbTimeStamp2"
                       name="last_updated"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Push data into County_NDS\Insert new County.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      dataType="i4"
+                      name="source_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -950,7 +970,7 @@ where [refTable].[state_code_NK] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[County_NDS]) [refTable]
-where [refTable].[county_fips_NK] = ?</property>
+where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -981,12 +1001,12 @@ where [refTable].[county_fips_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_full" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_ascii" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_fips_NK" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_full" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_ascii" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_fips_NK" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[county_fips]};</property>
+                  name="ParameterMap">#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[county_fips]};#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1021,6 +1041,22 @@ where [refTable].[county_fips_NK] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">county_fips_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into County_NDS\Lookup a county_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -1950,7 +1986,7 @@ SET
 	county_name = ?,
 	county_ascii = ?,
 	last_updated = GETDATE() 
-WHERE county_SK = ?</property>
+WHERE source_id = ? AND county_SK = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1981,12 +2017,6 @@ WHERE county_SK = ?</property>
                       externalMetadataColumnId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\Push data into County_NDS\Merge Join.Outputs[Merge Join Output].Columns[county_ascii]" />
                     <inputColumn
-                      refId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].Columns[county_SK]"
-                      cachedDataType="i4"
-                      cachedName="county_SK"
-                      externalMetadataColumnId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\Push data into County_NDS\Lookup a county_SK.Outputs[Lookup Match Output].Columns[county_SK]" />
-                    <inputColumn
                       refId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].Columns[county_full]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -2002,6 +2032,18 @@ WHERE county_SK = ?</property>
                       cachedName="county_name"
                       externalMetadataColumnId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[county_name]" />
+                    <inputColumn
+                      refId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]" />
+                    <inputColumn
+                      refId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].Columns[county_SK]"
+                      cachedDataType="i4"
+                      cachedName="county_SK"
+                      externalMetadataColumnId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Push data into County_NDS\Lookup a county_SK.Outputs[Lookup Match Output].Columns[county_SK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2053,6 +2095,17 @@ WHERE county_SK = ?</property>
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Push data into County_NDS\Update exists County.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -2439,6 +2492,28 @@ FROM uscounties USC;</property>
                           name="FriendlyExpression">(aqi &lt;= 50) ? 1 : (aqi &gt; 50 &amp;&amp; aqi &lt;= 100) ? 2 : (aqi &gt; 100 &amp;&amp; aqi &lt;= 150) ? 3 : (aqi &gt; 150 &amp;&amp; aqi &lt;= 200) ? 4 : (aqi &gt; 200 &amp;&amp; aqi &lt;= 300) ? 5 : 6</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]"
+                      name="source_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2488,7 +2563,7 @@ FROM uscounties USC;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Site_NDS]) [refTable]
-where [refTable].[defining_site_NK] = ?</property>
+where [refTable].[defining_site_NK] = ? and [refTable].[source_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2519,12 +2594,12 @@ where [refTable].[defining_site_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_site_NK" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="modified_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_site_NK" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_site]};</property>
+                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_site]};#{Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2559,6 +2634,22 @@ where [refTable].[defining_site_NK] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">defining_site_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\Add Site_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2648,7 +2739,7 @@ where [refTable].[defining_site_NK] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Monitor_NDS]) [refTable]
-where [refTable].[date] = ? and [refTable].[defining_parameter] = ? and [refTable].[site_SK] = ?</property>
+where [refTable].[date] = ? and [refTable].[source_id] = ? and [refTable].[site_SK] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2679,12 +2770,12 @@ where [refTable].[date] = ? and [refTable].[defining_parameter] = ? and [refTabl
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="monitor_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_parameter" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="aqi" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="number_of_sites_reporting" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="monitor_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_parameter" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="aqi" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="number_of_sites_reporting" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[date]};#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]};#{Package\Push data into Monitor_NDS\Add Site_SK.Outputs[Lookup Match Output].Columns[site_SK]};</property>
+                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[date]};#{Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]};#{Package\Push data into Monitor_NDS\Add Site_SK.Outputs[Lookup Match Output].Columns[site_SK]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2724,17 +2815,15 @@ where [refTable].[date] = ? and [refTable].[defining_parameter] = ? and [refTabl
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Inputs[Lookup Input].Columns[defining_parameter]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="defining_parameter"
-                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]">
+                      refId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">defining_parameter</property>
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2836,14 +2925,13 @@ where [refTable].[date] = ? and [refTable].[defining_parameter] = ? and [refTabl
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Monitor_NDS
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Monitor_NDS 
 SET
 	aqi = ?,
 	category_SK = ?,
 	number_of_sites_reporting = ?,
 	last_updated = GETDATE()
-WHERE
-	monitor_SK = ?</property>
+WHERE source_id = ? AND monitor_SK = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2884,10 +2972,16 @@ WHERE
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[number_of_sites_reporting]" />
                     <inputColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]" />
+                    <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[monitor_SK]"
                       cachedDataType="i4"
                       cachedName="monitor_SK"
-                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Outputs[Lookup Match Output].Columns[monitor_SK]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -2929,6 +3023,17 @@ WHERE
                       refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       dataType="i4"
                       name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -3095,6 +3200,12 @@ WHERE
                       cachedScale="7"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_updated]"
                       lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[last_updated]" />
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3138,6 +3249,10 @@ WHERE
                       dataType="dbTimeStamp2"
                       name="last_updated"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      dataType="i4"
+                      name="source_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3497,7 +3612,7 @@ FROM state_aqi SA;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[County_NDS]) [refTable]
-where [refTable].[county_fips_NK] = ?</property>
+where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -3528,12 +3643,12 @@ where [refTable].[county_fips_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_full" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_ascii" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_fips_NK" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="modified_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_full" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_ascii" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="county_fips_NK" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Site_NDS\118:invalid};</property>
+                  name="ParameterMap">#{Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[county_fips]};#{Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3568,6 +3683,22 @@ where [refTable].[county_fips_NK] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">county_fips_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into Site_NDS\Add County_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -3888,6 +4019,28 @@ where [refTable].[county_fips_NK] = ?</property>
                           name="FriendlyExpression">(DT_STR,5,1252)(LEFT(defining_site,2) + SUBSTRING(defining_site,4,3))</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]"
+                      name="source_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4020,6 +4173,12 @@ where [refTable].[county_fips_NK] = ?</property>
                       cachedName="defining_site"
                       externalMetadataColumnId="Package\Push data into Site_NDS\Insert new Site.Inputs[OLE DB Destination Input].ExternalColumns[defining_site_NK]"
                       lineageId="Package\Push data into Site_NDS\Data Conversion.Outputs[Data Conversion Output].Columns[defining_site]" />
+                    <inputColumn
+                      refId="Package\Push data into Site_NDS\Insert new Site.Inputs[OLE DB Destination Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into Site_NDS\Insert new Site.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      lineageId="Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4051,6 +4210,10 @@ where [refTable].[county_fips_NK] = ?</property>
                       dataType="dbTimeStamp2"
                       name="last_updated"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Push data into Site_NDS\Insert new Site.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      dataType="i4"
+                      name="source_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4100,7 +4263,7 @@ where [refTable].[county_fips_NK] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Site_NDS]) [refTable]
-where [refTable].[defining_site_NK] = ?</property>
+where [refTable].[source_id] = ? and [refTable].[defining_site_NK] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -4131,12 +4294,12 @@ where [refTable].[defining_site_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_site_NK" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="site_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="county_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="site_code" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="defining_site_NK" dataType="DT_STR" length="11" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Site_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_site]};</property>
+                  name="ParameterMap">#{Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};#{Package\Push data into Site_NDS\Data Conversion.Outputs[Data Conversion Output].Columns[defining_site]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4171,6 +4334,22 @@ where [refTable].[defining_site_NK] = ?</property>
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">defining_site_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into Site_NDS\Lookup a Site_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into Site_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -4498,6 +4677,152 @@ FROM state_aqi SA;</property>
               </outputs>
             </component>
             <component
+              refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add source_id, merge state_name and state_code"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input].Columns[state_name_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name_1"
+                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input].Columns[state_name_2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state_name_2"
+                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_2]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input].Columns[state_code_1]"
+                      cachedDataType="i4"
+                      cachedName="state_code_1"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input].Columns[state_code_2]"
+                      cachedDataType="i4"
+                      cachedName="state_code_2"
+                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_name]"
+                      name="state_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,50,1252)([ISNULL](#{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]}) ? #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_2]} : #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,50,1252)(ISNULL(state_name_1) ? state_name_2 : state_name_1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_code]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_code]"
+                      name="state_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([ISNULL](#{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]}) ? #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_2]} : #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(ISNULL(state_code_1) ? state_code_2 : state_code_1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]"
+                      name="source_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Push data into State_NDS\Insert new State"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -4584,7 +4909,7 @@ FROM state_aqi SA;</property>
                       cachedLength="50"
                       cachedName="state_name"
                       externalMetadataColumnId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].ExternalColumns[state_name]"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_name]" />
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_name]" />
                     <inputColumn
                       refId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].Columns[created_date]"
                       cachedDataType="dbTimeStamp"
@@ -4602,7 +4927,13 @@ FROM state_aqi SA;</property>
                       cachedDataType="i4"
                       cachedName="state_code"
                       externalMetadataColumnId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].ExternalColumns[state_code_NK]"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_code]" />
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_code]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4636,6 +4967,10 @@ FROM state_aqi SA;</property>
                       dataType="dbTimeStamp2"
                       name="last_updated"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
+                      dataType="i4"
+                      name="source_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4685,7 +5020,7 @@ FROM state_aqi SA;</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[State_NDS]) [refTable]
-where [refTable].[state_code_NK] = ?</property>
+where [refTable].[state_code_NK] = ? and [refTable].[source_id] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -4716,12 +5051,12 @@ where [refTable].[state_code_NK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_code_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_id" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="state_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_code_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="state_id" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_code]};</property>
+                  name="ParameterMap">#{Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_code]};#{Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -4748,12 +5083,28 @@ where [refTable].[state_code_NK] = ?</property>
                       refId="Package\Push data into State_NDS\Lookup a state_SK.Inputs[Lookup Input].Columns[state_code]"
                       cachedDataType="i4"
                       cachedName="state_code"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_code]">
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_code]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
                           name="JoinToReferenceColumn">state_code_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Lookup a state_SK.Inputs[Lookup Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">source_id</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -4976,130 +5327,6 @@ where [refTable].[state_code_NK] = ?</property>
                           name="InputColumnID">#{Package\Push data into State_NDS\Merge Join.Inputs[Merge Join Right Input].Columns[state_code]}</property>
                       </properties>
                     </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Push data into State_NDS\merge state_name"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="merge state_name"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input].Columns[state_name_1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="state_name_1"
-                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]" />
-                    <inputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input].Columns[state_name_2]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="state_name_2"
-                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_2]" />
-                    <inputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input].Columns[state_code_1]"
-                      cachedDataType="i4"
-                      cachedName="state_code_1"
-                      cachedSortKeyPosition="1"
-                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]" />
-                    <inputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input].Columns[state_code_2]"
-                      cachedDataType="i4"
-                      cachedName="state_code_2"
-                      lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_2]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_name]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_name]"
-                      name="state_name"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_STR,50,1252)([ISNULL](#{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]}) ? #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_2]} : #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_name_1]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_STR,50,1252)(ISNULL(state_name_1) ? state_name_2 : state_name_1)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_code]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_code]"
-                      name="state_code"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_I4)([ISNULL](#{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]}) ? #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_2]} : #{Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_code_1]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)(ISNULL(state_code_1) ? state_code_2 : state_code_1)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -5496,7 +5723,7 @@ SET
 	state_id = ?, 
 	state_name = ?,
 	last_updated = GETDATE() 
-WHERE state_SK = ?</property>
+WHERE source_id = ? AND state_SK = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -5527,19 +5754,25 @@ WHERE state_SK = ?</property>
                       externalMetadataColumnId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output].Columns[state_id]" />
                     <inputColumn
-                      refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].Columns[state_SK]"
-                      cachedDataType="i4"
-                      cachedName="state_SK"
-                      externalMetadataColumnId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\Push data into State_NDS\Lookup a state_SK.Outputs[Lookup Match Output].Columns[state_SK]" />
-                    <inputColumn
                       refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].Columns[state_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="state_name"
                       externalMetadataColumnId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output].Columns[state_name]" />
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[state_name]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].Columns[source_id]"
+                      cachedDataType="i4"
+                      cachedName="source_id"
+                      externalMetadataColumnId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output].Columns[source_id]" />
+                    <inputColumn
+                      refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].Columns[state_SK]"
+                      cachedDataType="i4"
+                      cachedName="state_SK"
+                      externalMetadataColumnId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Push data into State_NDS\Lookup a state_SK.Outputs[Lookup Match Output].Columns[state_SK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -5573,6 +5806,17 @@ WHERE state_SK = ?</property>
                       refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       dataType="i4"
                       name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5777,14 +6021,14 @@ FROM uscounties USC;</property>
           <paths>
             <path
               refId="Package\Push data into State_NDS.Paths[Derived Column Output]"
-              endId="Package\Push data into State_NDS\Lookup a state_SK.Inputs[Lookup Input]"
-              name="Derived Column Output"
-              startId="Package\Push data into State_NDS\merge state_name.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Push data into State_NDS.Paths[Derived Column Output1]"
               endId="Package\Push data into State_NDS\Insert new State.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Push data into State_NDS\Add created_date and modified_date.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Push data into State_NDS.Paths[Derived Column Output1]"
+              endId="Package\Push data into State_NDS\Lookup a state_SK.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Outputs[Derived Column Output]" />
             <path
               refId="Package\Push data into State_NDS.Paths[Lookup Match Output]"
               endId="Package\Push data into State_NDS\Update exists State.Inputs[OLE DB Command Input]"
@@ -5797,7 +6041,7 @@ FROM uscounties USC;</property>
               startId="Package\Push data into State_NDS\Lookup a state_SK.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Push data into State_NDS.Paths[Merge Join Output]"
-              endId="Package\Push data into State_NDS\merge state_name.Inputs[Derived Column Input]"
+              endId="Package\Push data into State_NDS\Add source_id, merge state_name and state_code.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\Push data into State_NDS\Merge Join.Outputs[Merge Join Output]" />
             <path
@@ -5850,6 +6094,14 @@ FROM uscounties USC;</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Push data into Monitor_NDS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{E3F889AE-58D4-49BD-8D8B-351BE2EA2CCA}"
+      DTS:From="Package\Data Quality Firewall"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Push data into State_NDS" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -5862,7 +6114,7 @@ FROM uscounties USC;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="208.8,41.6"
           Id="Package\Push data into County_NDS"
@@ -5945,6 +6197,32 @@ FROM uscounties USC;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Data Quality Firewall"
+          TopLeft="254.285714827022,25.99999997721" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="344.714286247991,67.59999997721">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.517646985091"
+              Start="0,0"
+              End="0,35.017646985091">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.017646985091" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5954,123 +6232,41 @@ FROM uscounties USC;</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="128,41.6"
+          Id="Package\Push data into County_NDS\uscounties"
+          TopLeft="222.999996677041,8.99999986588956" />
+        <NodeLayout
           Size="140.8,41.6"
           Id="Package\Push data into County_NDS\Add state_SK"
-          TopLeft="117.499998278916,418.985709282117" />
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\Push data into County_NDS\Update exists County"
-          TopLeft="105.333331763744,669.733324382702" />
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Push data into County_NDS\Insert new County"
-          TopLeft="469.285707475276,666.349572184049" />
+          TopLeft="122.166664876044,418.319042625384" />
         <NodeLayout
           Size="174.4,41.6"
           Id="Package\Push data into County_NDS\Lookup a county_SK"
           TopLeft="108.190474578312,550.066658903161" />
         <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Push data into County_NDS\Insert new County"
+          TopLeft="469.285707475276,666.349572184049" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Push data into County_NDS\Derived Column"
+          TopLeft="329.166661761701,311.999995678663" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Push data into County_NDS\Sort state_aqi"
+          TopLeft="433.199993791183,105.866665256023" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Push data into County_NDS\Merge Join"
+          TopLeft="338.199995365738,217.199996930361" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Push data into County_NDS\Update exists County"
+          TopLeft="105.333331763744,669.733324382702" />
+        <NodeLayout
           Size="252.8,41.6"
           Id="Package\Push data into County_NDS\Add created_date and modified_date"
           TopLeft="427.333326965571,553.199992738167" />
-        <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[Lookup No Match Output]"
-          TopLeft="282.590474578312,572.433325820664">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="144.742852387259,0"
-              Start="0,0"
-              End="137.242852387259,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="137.242852387259,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="12.8150394748795,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[Lookup Match Output1]"
-          TopLeft="191.645236428614,460.585709282117">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,89.4809496210444"
-              Start="0,0"
-              End="0,81.9809496210444">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,81.9809496210444" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,35.1857873105222,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[Lookup Match Output]"
-          TopLeft="194.961903171028,591.666658903161">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,78.0666654795409"
-              Start="0,0"
-              End="0,70.5666654795409">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.5666654795409" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,29.4786452397705,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[Derived Column Output]"
-          TopLeft="552.909517220423,594.799992738167">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71.5495794458824"
-              Start="0,0"
-              End="0,64.0495794458824">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,64.0495794458824" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="128,41.6"
-          Id="Package\Push data into County_NDS\uscounties"
-          TopLeft="222.999996677041,8.99999986588956" />
         <NodeLayout
           Size="121.6,41.6"
           Id="Package\Push data into County_NDS\state_aqi"
@@ -6080,19 +6276,31 @@ FROM uscounties USC;</property>
           Id="Package\Push data into County_NDS\Sort uscounties"
           TopLeft="212.533330412705,105.199998599291" />
         <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[OLE DB Source Output]"
-          TopLeft="287.366663544873,50.5999998658896">
+          Id="Package\Push data into County_NDS.Paths[Sort Output1]"
+          TopLeft="505.199993791183,147.466665256023">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54.5999987334013"
+              EndConnector="-81.9333317587779,69.7333316743374"
               Start="0,0"
-              End="0,47.0999987334013">
+              End="-81.9333317587779,62.2333316743374">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.0999987334013" />
+                    End="0,37.3297551143024" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.3297551143024"
+                    Point2="0,41.3297551143024"
+                    Point3="-4,41.3297551143024" />
+                  <mssgle:LineSegment
+                    End="-77.9333317587779,41.3297551143024" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.9333317587779,41.3297551143024"
+                    Point2="-81.9333317587779,41.3297551143024"
+                    Point3="-81.9333317587779,45.3297551143024" />
+                  <mssgle:LineSegment
+                    End="-81.9333317587779,62.2333316743374" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6101,36 +6309,6 @@ FROM uscounties USC;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Push data into County_NDS\Sort state_aqi"
-          TopLeft="433.199993791183,105.866665256023" />
-        <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[OLE DB Source Output1]"
-          TopLeft="505.3333269159,48.8000000596047">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,57.0666651964187"
-              Start="0,0"
-              End="0,49.5666651964187">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.5666651964187" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Push data into County_NDS\Merge Join"
-          TopLeft="338.199995365738,217.199996930361" />
         <EdgeLayout
           Id="Package\Push data into County_NDS.Paths[Sort Output]"
           TopLeft="287.733330412705,146.799998599291">
@@ -6166,31 +6344,19 @@ FROM uscounties USC;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Push data into County_NDS.Paths[Sort Output1]"
-          TopLeft="505.199993791183,147.466665256023">
+          Id="Package\Push data into County_NDS.Paths[OLE DB Source Output1]"
+          TopLeft="505.3333269159,48.8000000596047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-81.9333317587779,69.7333316743374"
+              EndConnector="0,57.0666651964187"
               Start="0,0"
-              End="-81.9333317587779,62.2333316743374">
+              End="0,49.5666651964187">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.3297551143024" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.3297551143024"
-                    Point2="0,41.3297551143024"
-                    Point3="-4,41.3297551143024" />
-                  <mssgle:LineSegment
-                    End="-77.9333317587779,41.3297551143024" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77.9333317587779,41.3297551143024"
-                    Point2="-81.9333317587779,41.3297551143024"
-                    Point3="-81.9333317587779,45.3297551143024" />
-                  <mssgle:LineSegment
-                    End="-81.9333317587779,62.2333316743374" />
+                    End="0,49.5666651964187" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6199,10 +6365,28 @@ FROM uscounties USC;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Push data into County_NDS\Derived Column"
-          TopLeft="329.166661761701,311.999995678663" />
+        <EdgeLayout
+          Id="Package\Push data into County_NDS.Paths[OLE DB Source Output]"
+          TopLeft="287.366663544873,50.5999998658896">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.5999987334013"
+              Start="0,0"
+              End="0,47.0999987334013">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.0999987334013" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into County_NDS.Paths[Merge Join Output]"
           TopLeft="404.28332856372,258.799996930361">
@@ -6226,31 +6410,125 @@ FROM uscounties USC;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Push data into County_NDS.Paths[Lookup No Match Output]"
+          TopLeft="282.590474578312,572.433325820664">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="144.742852387259,0"
+              Start="0,0"
+              End="137.242852387259,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="137.242852387259,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.8150394748795,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into County_NDS.Paths[Lookup Match Output1]"
+          TopLeft="193.978569727178,459.919042625384">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.1476162777766"
+              Start="0,0"
+              End="0,82.6476162777766">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.6476162777766" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,35.5191206388883,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into County_NDS.Paths[Lookup Match Output]"
+          TopLeft="194.961903171028,591.666658903161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.0666654795409"
+              Start="0,0"
+              End="0,70.5666654795409">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5666654795409" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,29.4786452397705,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Push data into County_NDS.Paths[Derived Column Output1]"
           TopLeft="405.566661761701,353.599995678663">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-217.666663482785,65.385713603454"
+              EndConnector="-212.999996885657,64.7190469467214"
               Start="0,0"
-              End="-217.666663482785,57.885713603454">
+              End="-212.999996885657,57.2190469467214">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.692856801727" />
+                    End="0,28.3595234733607" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.692856801727"
-                    Point2="0,32.692856801727"
-                    Point3="-4,32.692856801727" />
+                    Point1="0,28.3595234733607"
+                    Point2="0,32.3595234733607"
+                    Point3="-4,32.3595234733607" />
                   <mssgle:LineSegment
-                    End="-213.666663482785,32.692856801727" />
+                    End="-208.999996885657,32.3595234733607" />
                   <mssgle:CubicBezierSegment
-                    Point1="-213.666663482785,32.692856801727"
-                    Point2="-217.666663482785,32.692856801727"
-                    Point3="-217.666663482785,36.692856801727" />
+                    Point1="-208.999996885657,32.3595234733607"
+                    Point2="-212.999996885657,32.3595234733607"
+                    Point3="-212.999996885657,36.3595234733607" />
                   <mssgle:LineSegment
-                    End="-217.666663482785,57.885713603454" />
+                    End="-212.999996885657,57.2190469467214" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into County_NDS.Paths[Derived Column Output]"
+          TopLeft="552.909517220423,594.799992738167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.5495794458824"
+              Start="0,0"
+              End="0,64.0495794458824">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.0495794458824" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6263,12 +6541,20 @@ FROM uscounties USC;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Push data into County_NDS\uscounties">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Push data into County_NDS\Add state_SK">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -6278,7 +6564,30 @@ FROM uscounties USC;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into County_NDS\Lookup a county_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[County_NDS]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6299,23 +6608,8 @@ FROM uscounties USC;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Push data into County_NDS\Lookup a county_SK">
+    design-time-name="Package\Push data into County_NDS\state_aqi">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[County_NDS]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -6327,18 +6621,6 @@ FROM uscounties USC;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Push data into Monitor_NDS\OLE DB Destination"
-          TopLeft="579.19999153614,333.199997864167" />
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\Push data into Monitor_NDS\Lookup a Monitor_SK"
-          TopLeft="265.333329379559,331.999996006488" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Push data into Monitor_NDS\OLE DB Command"
-          TopLeft="244.66666302085,473.333327949047" />
-        <NodeLayout
           Size="121.6,41.6"
           Id="Package\Push data into Monitor_NDS\state_aqi"
           TopLeft="291.999995648861,7.66666655242468" />
@@ -6346,78 +6628,18 @@ FROM uscounties USC;</property>
           Size="135.2,41.6"
           Id="Package\Push data into Monitor_NDS\Add Site_SK"
           TopLeft="288.666662365198,200.666664630174" />
-        <EdgeLayout
-          Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output]"
-          TopLeft="355.399995872378,242.266664630174">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,89.7333313763139"
-              Start="0,0"
-              End="0,82.2333313763139">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,82.2333313763139" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,35.3119781881569,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into Monitor_NDS.Paths[Lookup No Match Output]"
-          TopLeft="443.733329379559,353.399996935327">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="135.466662156581,0"
-              Start="0,0"
-              End="127.966662156581,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="127.966662156581,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="8.17694435954069,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output1]"
-          TopLeft="326.599996200204,373.599996006488">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,99.7333319425586"
-              Start="0,0"
-              End="0,92.2333319425586">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,92.2333319425586" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,40.3119784712793,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Push data into Monitor_NDS\OLE DB Destination"
+          TopLeft="579.19999153614,333.199997864167" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Push data into Monitor_NDS\Lookup a Monitor_SK"
+          TopLeft="266.99999602139,332.833329327404" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Push data into Monitor_NDS\OLE DB Command"
+          TopLeft="273.833329252899,477.499994553625" />
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\Push data into Monitor_NDS\Add category_SK"
@@ -6441,7 +6663,81 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into Monitor_NDS.Paths[Lookup No Match Output]"
+          TopLeft="445.39999602139,353.816663595785">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.79999551475,0"
+              Start="0,0"
+              End="126.29999551475,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.29999551475,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.34361103862482,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output1]"
+          TopLeft="356.216662637145,374.433329327404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,103.066665226222"
+              Start="0,0"
+              End="0,95.5666652262217">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,95.5666652262217" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,41.9786451131109,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output]"
+          TopLeft="356.233329193294,242.266664630174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.5666646972297"
+              Start="0,0"
+              End="0,83.0666646972297">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.0666646972297" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,35.7286448486148,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6463,53 +6759,19 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Push data into Monitor_NDS\Lookup a Monitor_SK">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Monitor_NDS]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Push data into Monitor_NDS\state_aqi">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into Monitor_NDS\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -6536,35 +6798,97 @@ FROM uscounties USC;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into Monitor_NDS\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into Monitor_NDS\Lookup a Monitor_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Monitor_NDS]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Push data into Site_NDS">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\Push data into Site_NDS\Add County_SK"
-          TopLeft="255.119043817478,177.738092589591" />
+          Size="121.6,41.6"
+          Id="Package\Push data into Site_NDS\state_aqi"
+          TopLeft="263.571424643908,18.2857140132359" />
         <NodeLayout
           Size="252.8,41.6"
           Id="Package\Push data into Site_NDS\Add created_date and modified_date"
           TopLeft="535.952372966068,353.571423302803" />
         <NodeLayout
-          Size="160,41.6"
-          Id="Package\Push data into Site_NDS\Lookup a Site_SK"
-          TopLeft="249.523805805615,351.785709043699" />
-        <NodeLayout
           Size="155.2,41.6"
           Id="Package\Push data into Site_NDS\Data Conversion"
           TopLeft="253.333329558372,276.666662544012" />
         <NodeLayout
-          Size="121.6,41.6"
-          Id="Package\Push data into Site_NDS\state_aqi"
-          TopLeft="263.571424643908,18.2857140132359" />
+          Size="160,41.6"
+          Id="Package\Push data into Site_NDS\Lookup a Site_SK"
+          TopLeft="249.523805805615,351.785709043699" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Push data into Site_NDS\Add County_SK"
+          TopLeft="255.119043817478,177.738092589591" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Push data into Site_NDS\Derived Column"
+          TopLeft="247.142853460142,91.4285708750997" />
         <NodeLayout
           Size="149.6,41.6"
           Id="Package\Push data into Site_NDS\Insert new Site"
           TopLeft="582.499991320073,452.499993257225" />
+        <EdgeLayout
+          Id="Package\Push data into Site_NDS.Paths[OLE DB Source Output]"
+          TopLeft="323.957139052025,59.8857140132359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.5428568618638"
+              Start="0,0"
+              End="0,24.0428568618638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.0428568618638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into Site_NDS.Paths[Lookup No Match Output]"
           TopLeft="409.523805805615,373.478566173251">
@@ -6585,7 +6909,7 @@ FROM uscounties USC;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="3.65789686147647,5,111.6127734375,11.609375"
+              BoundingBox="3.65789686147649,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6613,46 +6937,20 @@ FROM uscounties USC;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Push data into Site_NDS\Derived Column"
-          TopLeft="247.142853460142,91.4285708750997" />
         <EdgeLayout
-          Id="Package\Push data into Site_NDS.Paths[OLE DB Source Output]"
-          TopLeft="323.957139052025,59.8857140132359">
+          Id="Package\Push data into Site_NDS.Paths[Derived Column Output1]"
+          TopLeft="327.13094863881,133.0285708751">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.5428568618638"
+              EndConnector="0,44.7095217144913"
               Start="0,0"
-              End="0,24.0428568618638">
+              End="0,37.2095217144913">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.0428568618638" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Push data into Site_NDS.Paths[Data Conversion Output]"
-          TopLeft="330.228567681993,318.266662544012">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33.519046499687"
-              Start="0,0"
-              End="0,26.019046499687">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.019046499687" />
+                    End="0,37.2095217144913" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6684,19 +6982,19 @@ FROM uscounties USC;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Push data into Site_NDS.Paths[Derived Column Output1]"
-          TopLeft="327.13094863881,133.0285708751">
+          Id="Package\Push data into Site_NDS.Paths[Data Conversion Output]"
+          TopLeft="330.228567681993,318.266662544012">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.7095217144913"
+              EndConnector="0,33.519046499687"
               Start="0,0"
-              End="0,37.2095217144913">
+              End="0,26.019046499687">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.2095217144913" />
+                    End="0,26.019046499687" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6708,6 +7006,37 @@ FROM uscounties USC;</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into Site_NDS\state_aqi">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into Site_NDS\Lookup a Site_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Site_NDS]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Push data into Site_NDS\Add County_SK">
     <Properties>
@@ -6732,37 +7061,6 @@ FROM uscounties USC;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Push data into Site_NDS\Lookup a Site_SK">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Site_NDS]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into Site_NDS\state_aqi">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Push data into Site_NDS\Insert new Site">
     <Properties>
       <Property>
@@ -6781,20 +7079,94 @@ FROM uscounties USC;</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="169.6,41.6"
-          Id="Package\Push data into State_NDS\Update exists State"
-          TopLeft="133.571428855768,731.32941125059" />
+          Size="156.8,41.6"
+          Id="Package\Push data into State_NDS\Insert new State"
+          TopLeft="660.774893091715,708.646345573787" />
+        <NodeLayout
+          Size="315.2,41.6"
+          Id="Package\Push data into State_NDS\Add source_id, merge state_name and state_code"
+          TopLeft="232.338775854929,487.892283758746" />
+        <NodeLayout
+          Size="121.6,41.6"
+          Id="Package\Push data into State_NDS\state_aqi"
+          TopLeft="471.938776514838,194.394957826823" />
         <NodeLayout
           Size="165.6,41.6"
           Id="Package\Push data into State_NDS\Lookup a state_SK"
-          TopLeft="131.428571708349,622.835293685308" />
+          TopLeft="306.613894605372,606.136541551739" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Push data into State_NDS\Sort uscounties"
+          TopLeft="170.555555918623,304.39999984047" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Push data into State_NDS\Merge Join"
+          TopLeft="325.00000069184,406.105882104262" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\Push data into State_NDS\uscounties"
+          TopLeft="185.430839397002,191.251166979905" />
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Push data into State_NDS\Update exists State"
+          TopLeft="308.756751752791,714.630659117021" />
         <NodeLayout
           Size="252.8,41.6"
           Id="Package\Push data into State_NDS\Add created_date and modified_date"
-          TopLeft="440.000000936645,621.19999965815" />
+          TopLeft="620.060607290759,601.716933753447" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Push data into State_NDS\Sort state_aqi"
+          TopLeft="460.714286695025,300.576470432057" />
+        <EdgeLayout
+          Id="Package\Push data into State_NDS.Paths[Merge Join Output]"
+          TopLeft="389.869388273385,447.705882104262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.1864016544839"
+              Start="0,0"
+              End="0,32.6864016544839">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.6864016544839" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into State_NDS.Paths[Lookup No Match Output]"
+          TopLeft="472.213894605372,624.726737652593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147.846712685386,0"
+              Start="0,0"
+              End="140.346712685386,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="140.346712685386,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="14.3669696239431,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into State_NDS.Paths[Lookup Match Output]"
-          TopLeft="216.300000282058,664.435293685308">
+          TopLeft="391.485323179081,647.736541551739">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6817,157 +7189,41 @@ FROM uscounties USC;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[Lookup No Match Output]"
-          TopLeft="297.028571708349,642.817646671729">
+          Id="Package\Push data into State_NDS.Paths[Derived Column Output1]"
+          TopLeft="389.676335230151,529.492283758746">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="142.971429228296,0"
+              EndConnector="0,76.6442577929935"
               Start="0,0"
-              End="135.471429228296,0">
+              End="0,69.1442577929935">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="135.471429228296,0" />
+                    End="0,69.1442577929935" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="11.929327895398,5,111.6127734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="128,41.6"
-          Id="Package\Push data into State_NDS\uscounties"
-          TopLeft="186.224490192342,192.100840181775" />
-        <NodeLayout
-          Size="121.6,41.6"
-          Id="Package\Push data into State_NDS\state_aqi"
-          TopLeft="471.938776514838,194.394957826823" />
-        <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\Push data into State_NDS\merge state_name"
-          TopLeft="300.195918856522,520.218486938967" />
         <EdgeLayout
           Id="Package\Push data into State_NDS.Paths[Derived Column Output]"
-          TopLeft="383.395918856522,561.818486938967">
+          TopLeft="742.817750191237,643.316933753447">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-169.167347148174,61.0168067463411"
+              EndConnector="0,65.3294118203401"
               Start="0,0"
-              End="-169.167347148174,53.5168067463411">
+              End="0,57.8294118203401">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5084033731706" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5084033731706"
-                    Point2="0,30.5084033731706"
-                    Point3="-4,30.5084033731706" />
-                  <mssgle:LineSegment
-                    End="-165.167347148174,30.5084033731706" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-165.167347148174,30.5084033731706"
-                    Point2="-169.167347148174,30.5084033731706"
-                    Point3="-169.167347148174,34.5084033731706" />
-                  <mssgle:LineSegment
-                    End="-169.167347148174,53.5168067463411" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Push data into State_NDS\Sort uscounties"
-          TopLeft="172.142857509304,304.39999984047" />
-        <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[OLE DB Source Output]"
-          TopLeft="248.783673850823,233.700840181775">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70.6991596586946"
-              Start="0,0"
-              End="0,63.1991596586946">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,63.1991596586946" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="144,41.6"
-          Id="Package\Push data into State_NDS\Sort state_aqi"
-          TopLeft="460.714286695025,300.576470432057" />
-        <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[OLE DB Source Output1]"
-          TopLeft="532.726531604932,235.994957826823">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64.5815126052334"
-              Start="0,0"
-              End="0,57.0815126052334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.0815126052334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Push data into State_NDS\Merge Join"
-          TopLeft="325.00000069184,406.105882104262" />
-        <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[Sort Output]"
-          TopLeft="247.342857509304,345.99999984047">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="122.190476515869,60.105882263792"
-              Start="0,0"
-              End="122.190476515869,52.605882263792">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6237302197597" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6237302197597"
-                    Point2="0,35.6237302197597"
-                    Point3="4,35.6237302197597" />
-                  <mssgle:LineSegment
-                    End="118.190476515869,35.6237302197597" />
-                  <mssgle:CubicBezierSegment
-                    Point1="118.190476515869,35.6237302197597"
-                    Point2="122.190476515869,35.6237302197597"
-                    Point3="122.190476515869,39.6237302197597" />
-                  <mssgle:LineSegment
-                    End="122.190476515869,52.605882263792" />
+                    End="0,57.8294118203401" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7011,19 +7267,31 @@ FROM uscounties USC;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[Merge Join Output]"
-          TopLeft="386.597959774181,447.705882104262">
+          Id="Package\Push data into State_NDS.Paths[Sort Output]"
+          TopLeft="245.755555918623,345.99999984047">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,72.5126048347046"
+              EndConnector="123.77777810655,60.105882263792"
               Start="0,0"
-              End="0,65.0126048347046">
+              End="123.77777810655,52.605882263792">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,65.0126048347046" />
+                    End="0,31.6237302197596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6237302197596"
+                    Point2="0,35.6237302197596"
+                    Point3="4,35.6237302197596" />
+                  <mssgle:LineSegment
+                    End="119.77777810655,35.6237302197596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.77777810655,35.6237302197596"
+                    Point2="123.77777810655,35.6237302197596"
+                    Point3="123.77777810655,39.6237302197596" />
+                  <mssgle:LineSegment
+                    End="123.77777810655,52.605882263792" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7032,24 +7300,42 @@ FROM uscounties USC;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156.8,41.6"
-          Id="Package\Push data into State_NDS\Insert new State"
-          TopLeft="480.714286737601,728.12941147849" />
         <EdgeLayout
-          Id="Package\Push data into State_NDS.Paths[Derived Column Output1]"
-          TopLeft="562.757143837123,662.79999965815">
+          Id="Package\Push data into State_NDS.Paths[OLE DB Source Output1]"
+          TopLeft="532.726531604932,235.994957826823">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,65.3294118203406"
+              EndConnector="0,64.5815126052334"
               Start="0,0"
-              End="0,57.8294118203406">
+              End="0,57.0815126052334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.8294118203406" />
+                    End="0,57.0815126052334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into State_NDS.Paths[OLE DB Source Output]"
+          TopLeft="247.593197657813,232.851166979905">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.5488328605646"
+              Start="0,0"
+              End="0,64.0488328605646">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.0488328605646" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7062,12 +7348,33 @@ FROM uscounties USC;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Push data into State_NDS\Insert new State">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into State_NDS\state_aqi">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Push data into State_NDS\Lookup a state_SK">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7089,43 +7396,6 @@ FROM uscounties USC;</property>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into State_NDS\state_aqi">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into County_NDS\uscounties">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into County_NDS\state_aqi">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Push data into State_NDS\Insert new State">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
