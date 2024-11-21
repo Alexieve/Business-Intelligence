@@ -26,15 +26,13 @@ CREATE TABLE Dim_Date (
 	 CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED (date_SK ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
 ) ON [PRIMARY];
 
-CREATE TABLE Dim_Site (
-    site_SK INT PRIMARY KEY CLUSTERED, -- Auto-increment and clustered index
+CREATE TABLE Dim_County (
+    county_SK INT PRIMARY KEY CLUSTERED,
     state_SK INT,
-	county_SK INT,
 	source_id INT,
 	state_id VARCHAR(5),
 	state_code INT,
     county_code INT,
-    site_code INT,
     state_name VARCHAR(50),
 	county_name VARCHAR(50),
 	status BIT,
@@ -45,7 +43,8 @@ CREATE TABLE Dim_Site (
 CREATE TABLE Fact_AQI_Monitor (
 	monitor_SK INT PRIMARY KEY CLUSTERED,
 	date_SK INT,
-	site_SK INT, 
+	county_SK INT, 
+	site_code_DD INT,
 	defining_parameter VARCHAR(50),
 	aqi INT,
 	category_name VARCHAR(50),
@@ -54,8 +53,8 @@ CREATE TABLE Fact_AQI_Monitor (
 	last_updated DATETIME,
 	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Date FOREIGN KEY (date_SK) 
 		REFERENCES Dim_Date(date_SK),
-	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Site FOREIGN KEY (site_SK) 
-		REFERENCES Dim_Site(site_SK)
+	CONSTRAINT FK_Fact_AQI_Monitor__Dim_County FOREIGN KEY (county_SK) 
+		REFERENCES Dim_County(county_SK)
 )
 
  

@@ -14,7 +14,7 @@ GO
 
 CREATE TABLE Source_DB(
 	sor_sk int IDENTITY(1,1),
-	sor_name VARCHAR(50)
+	sor_name VARCHAR(50),
 	CONSTRAINT PK_Source_DB PRIMARY KEY CLUSTERED (sor_sk)
 );
 
@@ -36,11 +36,11 @@ CREATE TABLE County_NDS(
 	county_SK int IDENTITY(1,1),
 	source_id int NOT NULL,
 	state_SK int NOT NULL,
+	county_fips_NK varchar(5) NULL,
 	county_code int NOT NULL,
 	county_full varchar(50) NOT NULL,
 	county_name varchar(50) NOT NULL,
 	county_ascii varchar(50) NOT NULL,
-	county_fips_NK varchar(5) NULL,
 	created_date datetime2(7) NOT NULL,
 	last_updated datetime2(7) NOT NULL,
 	CONSTRAINT PK_County_NDS PRIMARY KEY CLUSTERED (county_SK),
@@ -52,22 +52,6 @@ CREATE TABLE County_NDS(
 	CONSTRAINT U_County_NDS_2 UNIQUE(source_id, state_SK, county_code)
 );
 
-CREATE TABLE Site_NDS(
-	site_SK int IDENTITY(1,1),
-	source_id int NOT NULL,
-	county_SK int NOT NULL,
-	site_code int NOT NULL,
-	defining_site_NK VARCHAR(11) NOT NULL,
-	created_date datetime2(7) NOT NULL,
-	last_updated datetime2(7) NOT NULL,
-	CONSTRAINT PK_Site_NDS PRIMARY KEY CLUSTERED (site_SK),
-	CONSTRAINT FK_Site_NDS__Source_DB FOREIGN KEY (source_id) 
-		REFERENCES Source_DB(sor_sk),
-	CONSTRAINT FK_Site_NDS__County_NDS FOREIGN KEY (county_SK) 
-		REFERENCES County_NDS(county_SK),
-	CONSTRAINT U_Site_NDS_1 UNIQUE(source_id, defining_site_NK),
-	CONSTRAINT U_Site_NDS_2 UNIQUE(source_id, county_SK, site_code)
-);
 
 CREATE TABLE AQI_Category_NDS(
 	category_SK int IDENTITY(1,1),
@@ -84,7 +68,8 @@ CREATE TABLE Monitor_NDS(
 	monitor_SK int IDENTITY(1, 1),
 	source_id int NOT NULL,
 	date date NOT NULL,
-	site_SK int NOT NULL,
+	county_SK int NOT NULL,
+	site_code int NOT NULL,
 	defining_parameter varchar(50) NOT NULL,
 	aqi int NOT NULL,
 	category_SK int NOT NULL,
@@ -94,11 +79,11 @@ CREATE TABLE Monitor_NDS(
 	CONSTRAINT PK_Monitor_NDS PRIMARY KEY CLUSTERED(monitor_SK),
 	CONSTRAINT FK_Monitor_NDS__Source_DB FOREIGN KEY (source_id) 
 		REFERENCES Source_DB(sor_sk),
-	CONSTRAINT FK_Monitor_NDS__Site_NDS FOREIGN KEY (site_SK) 
-		REFERENCES Site_NDS(site_SK),
+	CONSTRAINT FK_Monitor_NDS__County_NDS FOREIGN KEY (county_SK) 
+		REFERENCES County_NDS(county_SK),
 	CONSTRAINT FK_Monitor_NDS__AQI_Category_NDS FOREIGN KEY (category_SK) 
 		REFERENCES AQI_Category_NDS(category_SK),
-	CONSTRAINT U_Monitor_NDS_1 UNIQUE(source_id, date, site_SK)
+	CONSTRAINT U_Monitor_NDS_1 UNIQUE(source_id, date, county_SK, site_code)
 );
 
 
