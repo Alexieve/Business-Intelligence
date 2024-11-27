@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stage-To-NDS"
   DTS:PackageType="5"
-  DTS:VersionBuild="233"
-  DTS:VersionGUID="{E89F24E9-A3E3-47BA-9DA8-DBB5811DD502}">
+  DTS:VersionBuild="234"
+  DTS:VersionGUID="{2EF2F06E-9DBA-4FD0-923E-98BAF08A8BCE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -814,7 +814,7 @@ where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into County_NDS\287:invalid};#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};</property>
+                  name="ParameterMap">#{Package\Push data into County_NDS\387:invalid};#{Package\Push data into County_NDS\Derived Column.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2102,108 +2102,6 @@ FROM uscounties USC;</property>
           version="1">
           <components>
             <component
-              refId="Package\Push data into Monitor_NDS\Add category_SK"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Add category_SK"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Push data into Monitor_NDS\Add category_SK.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Push data into Monitor_NDS\Add category_SK.Inputs[Derived Column Input].Columns[aqi]"
-                      cachedDataType="i4"
-                      cachedName="aqi"
-                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Push data into Monitor_NDS\Add category_SK.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[category_SK]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[category_SK]"
-                      name="category_SK"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 50) ? 1 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 50 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 100) ? 2 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 100 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 150) ? 3 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 150 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 200) ? 4 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 200 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 300) ? 5 : 6</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(aqi &lt;= 50) ? 1 : (aqi &gt; 50 &amp;&amp; aqi &lt;= 100) ? 2 : (aqi &gt; 100 &amp;&amp; aqi &lt;= 150) ? 3 : (aqi &gt; 150 &amp;&amp; aqi &lt;= 200) ? 4 : (aqi &gt; 200 &amp;&amp; aqi &lt;= 300) ? 5 : 6</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]"
-                      name="source_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">1</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">1</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Push data into Monitor_NDS\Add category_SK.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Push data into Monitor_NDS\Add County_SK"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -2260,7 +2158,7 @@ where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[county_fips]};#{Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]};</property>
+                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[county_fips]};#{Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2287,7 +2185,7 @@ where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
                       refId="Package\Push data into Monitor_NDS\Add County_SK.Inputs[Lookup Input].Columns[source_id]"
                       cachedDataType="i4"
                       cachedName="source_id"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]">
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2380,6 +2278,268 @@ where [refTable].[county_fips_NK] = ? and [refTable].[source_id] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\Push data into Monitor_NDS\Add parameter_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Add parameter_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Parameter_NDS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Parameter_NDS]) [refTable]
+where [refTable].[parameter_name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="parameter_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="parameter_name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="created_date" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="last_updated" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Push data into Monitor_NDS\Add parameter_SK.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALEX.AirPollution_NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALEX.AirPollution_NDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input].Columns[defining_parameter]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="defining_parameter"
+                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">parameter_name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output].Columns[parameter_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output].Columns[parameter_SK]"
+                      name="parameter_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">parameter_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Push data into Monitor_NDS\Add source_id and category_SK"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add source_id and category_SK"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Inputs[Derived Column Input].Columns[aqi]"
+                      cachedDataType="i4"
+                      cachedName="aqi"
+                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[category_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[category_SK]"
+                      name="category_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 50) ? 1 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 50 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 100) ? 2 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 100 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 150) ? 3 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 150 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 200) ? 4 : (#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &gt; 200 &amp;&amp; #{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[aqi]} &lt;= 300) ? 5 : 6</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(aqi &lt;= 50) ? 1 : (aqi &gt; 50 &amp;&amp; aqi &lt;= 100) ? 2 : (aqi &gt; 100 &amp;&amp; aqi &lt;= 150) ? 3 : (aqi &gt; 150 &amp;&amp; aqi &lt;= 200) ? 4 : (aqi &gt; 200 &amp;&amp; aqi &lt;= 300) ? 5 : 6</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]"
+                      name="source_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -2436,7 +2596,7 @@ where [refTable].[date] = ? and [refTable].[site_code] = ? and [refTable].[sourc
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[date]};#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[site_code]};#{Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]};#{Package\Push data into Monitor_NDS\Add County_SK.Outputs[Lookup Match Output].Columns[county_SK]};</property>
+                  name="ParameterMap">#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[date]};#{Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[site_code]};#{Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]};#{Package\Push data into Monitor_NDS\Add County_SK.Outputs[Lookup Match Output].Columns[county_SK]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2479,7 +2639,7 @@ where [refTable].[date] = ? and [refTable].[site_code] = ? and [refTable].[sourc
                       refId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Inputs[Lookup Input].Columns[source_id]"
                       cachedDataType="i4"
                       cachedName="source_id"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]">
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -2604,7 +2764,7 @@ where [refTable].[date] = ? and [refTable].[site_code] = ? and [refTable].[sourc
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE Monitor_NDS 
 SET
-	defining_parameter = ?,
+	parameter_SK = ?,
 	aqi = ?,
 	category_SK = ?,
 	number_of_sites_reporting = ?,
@@ -2632,14 +2792,6 @@ WHERE  monitor_SK = ?</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[defining_parameter]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="defining_parameter"
-                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]" />
-                    <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[aqi]"
                       cachedDataType="i4"
                       cachedName="aqi"
@@ -2650,7 +2802,7 @@ WHERE  monitor_SK = ?</property>
                       cachedDataType="i4"
                       cachedName="category_SK"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[category_SK]" />
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[category_SK]" />
                     <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[number_of_sites_reporting]"
                       cachedDataType="i4"
@@ -2663,14 +2815,18 @@ WHERE  monitor_SK = ?</property>
                       cachedName="monitor_SK"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Outputs[Lookup Match Output].Columns[monitor_SK]" />
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].Columns[parameter_SK]"
+                      cachedDataType="i4"
+                      cachedName="parameter_SK"
+                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output].Columns[parameter_SK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
+                      dataType="i4"
                       name="Param_0">
                       <properties>
                         <property
@@ -2837,14 +2993,6 @@ WHERE  monitor_SK = ?</property>
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
                       lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[date]" />
                     <inputColumn
-                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[defining_parameter]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="defining_parameter"
-                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
-                      lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[defining_parameter]" />
-                    <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[aqi]"
                       cachedDataType="i4"
                       cachedName="aqi"
@@ -2861,7 +3009,7 @@ WHERE  monitor_SK = ?</property>
                       cachedDataType="i4"
                       cachedName="category_SK"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_SK]"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[category_SK]" />
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[category_SK]" />
                     <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[created]"
                       cachedDataType="dbTimeStamp2"
@@ -2881,7 +3029,7 @@ WHERE  monitor_SK = ?</property>
                       cachedDataType="i4"
                       cachedName="source_id"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[source_id]"
-                      lineageId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output].Columns[source_id]" />
+                      lineageId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output].Columns[source_id]" />
                     <inputColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[county_SK]"
                       cachedDataType="i4"
@@ -2894,6 +3042,12 @@ WHERE  monitor_SK = ?</property>
                       cachedName="site_code"
                       externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[site_code]"
                       lineageId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output].Columns[site_code]" />
+                    <inputColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parameter_SK]"
+                      cachedDataType="i4"
+                      cachedName="parameter_SK"
+                      externalMetadataColumnId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parameter_SK]"
+                      lineageId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output].Columns[parameter_SK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2905,12 +3059,6 @@ WHERE  monitor_SK = ?</property>
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
                       dataType="dbDate"
                       name="date" />
-                    <externalMetadataColumn
-                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[defining_parameter]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="defining_parameter" />
                     <externalMetadataColumn
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[aqi]"
                       dataType="i4"
@@ -2945,6 +3093,10 @@ WHERE  monitor_SK = ?</property>
                       refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[site_code]"
                       dataType="i4"
                       name="site_code" />
+                    <externalMetadataColumn
+                      refId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parameter_SK]"
+                      dataType="i4"
+                      name="parameter_SK" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3263,7 +3415,7 @@ FROM state_aqi SA;</property>
               refId="Package\Push data into Monitor_NDS.Paths[Derived Column Output]"
               endId="Package\Push data into Monitor_NDS\Add County_SK.Inputs[Lookup Input]"
               name="Derived Column Output"
-              startId="Package\Push data into Monitor_NDS\Add category_SK.Outputs[Derived Column Output]" />
+              startId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Outputs[Derived Column Output]" />
             <path
               refId="Package\Push data into Monitor_NDS.Paths[Lookup Match Output]"
               endId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Inputs[Lookup Input]"
@@ -3275,13 +3427,18 @@ FROM state_aqi SA;</property>
               name="Lookup Match Output"
               startId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\Push data into Monitor_NDS.Paths[Lookup Match Output2]"
+              endId="Package\Push data into Monitor_NDS\Add source_id and category_SK.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Push data into Monitor_NDS\Add parameter_SK.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\Push data into Monitor_NDS.Paths[Lookup No Match Output]"
               endId="Package\Push data into Monitor_NDS\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\Push data into Monitor_NDS\Lookup a Monitor_SK.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Push data into Monitor_NDS.Paths[OLE DB Source Output]"
-              endId="Package\Push data into Monitor_NDS\Add category_SK.Inputs[Derived Column Input]"
+              endId="Package\Push data into Monitor_NDS\Add parameter_SK.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\Push data into Monitor_NDS\state_aqi.Outputs[OLE DB Source Output]" />
           </paths>
@@ -4976,7 +5133,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5010,7 +5169,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5032,7 +5193,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5054,7 +5217,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5076,7 +5241,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5182,7 +5349,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5204,7 +5373,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5293,52 +5464,30 @@ FROM uscounties USC;</property>
         <NodeLayout
           Size="151.2,41.6"
           Id="Package\Push data into Monitor_NDS\Add County_SK"
-          TopLeft="279.380948217852,199.952378926532" />
+          TopLeft="278.190472024841,288.257700977981" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Push data into Monitor_NDS\OLE DB Command"
-          TopLeft="273.833329252899,477.499994553625" />
+          TopLeft="272.642853059889,565.805316605074" />
         <NodeLayout
           Size="178.4,41.6"
           Id="Package\Push data into Monitor_NDS\Lookup a Monitor_SK"
-          TopLeft="266.99999602139,332.833329327404" />
+          TopLeft="265.809519828379,421.138651378853" />
         <NodeLayout
           Size="121.6,41.6"
           Id="Package\Push data into Monitor_NDS\state_aqi"
           TopLeft="291.999995648861,7.66666655242468" />
         <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Push data into Monitor_NDS\Add category_SK"
-          TopLeft="279.999996503194,101.999998480082" />
+          Size="228,41.6"
+          Id="Package\Push data into Monitor_NDS\Add source_id and category_SK"
+          TopLeft="241.054418188996,184.843135662369" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Push data into Monitor_NDS\OLE DB Destination"
-          TopLeft="579.19999153614,333.199997864167" />
-        <EdgeLayout
-          Id="Package\Push data into Monitor_NDS.Paths[OLE DB Source Output]"
-          TopLeft="355.999996076028,49.2666665524247">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.7333319276569"
-              Start="0,0"
-              End="0,45.2333319276569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.2333319276569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="578.009515343129,421.505319915616" />
         <EdgeLayout
           Id="Package\Push data into Monitor_NDS.Paths[Lookup No Match Output]"
-          TopLeft="445.39999602139,353.816663595785">
+          TopLeft="444.209519828379,442.121985647234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5356,37 +5505,37 @@ FROM uscounties USC;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.343611038625,5,111.6127734375,11.609375"
+              BoundingBox="7.34361103862508,5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output1]"
-          TopLeft="356.216662637145,374.433329327404">
+          TopLeft="355.026186444134,462.738651378853">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
               EndConnector="0,103.066665226222"
               Start="0,0"
-              End="0,95.5666652262217">
+              End="0,95.5666652262221">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,95.5666652262217" />
+                    End="0,95.5666652262221" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,41.9786451131109,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,41.9786451131111,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output]"
-          TopLeft="355.590472119621,241.552378926532">
+          TopLeft="354.39999592661,329.857700977981">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5410,24 +5559,74 @@ FROM uscounties USC;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Push data into Monitor_NDS.Paths[Derived Column Output]"
-          TopLeft="357.090472360523,143.599998480082">
+          TopLeft="354.422445106919,226.443135662369">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.35238044645"
+              EndConnector="0,61.8145653156118"
               Start="0,0"
-              End="0,48.85238044645">
+              End="0,54.3145653156118">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.85238044645" />
+                    End="0,54.3145653156118" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Push data into Monitor_NDS\Add parameter_SK"
+          TopLeft="272.329670847819,83.5294116914891" />
+        <EdgeLayout
+          Id="Package\Push data into Monitor_NDS.Paths[OLE DB Source Output]"
+          TopLeft="354.16483324834,49.2666665524247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.2627451390644"
+              Start="0,0"
+              End="0,26.7627451390644">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7627451390644" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Push data into Monitor_NDS.Paths[Lookup Match Output2]"
+          TopLeft="355.292044518408,125.129411691489">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.7137239708796"
+              Start="0,0"
+              End="0,52.2137239708796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.2137239708796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.3021744854398,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5576,7 +5775,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5598,7 +5799,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5620,7 +5823,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5642,7 +5847,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5712,7 +5919,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5734,7 +5943,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5768,7 +5979,9 @@ FROM uscounties USC;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5821,6 +6034,29 @@ FROM uscounties USC;</property>
   <PipelineComponentMetadata
     design-time-name="Package\Push data into State_NDS\uscounties">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Push data into Monitor_NDS\Add parameter_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Parameter_NDS]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

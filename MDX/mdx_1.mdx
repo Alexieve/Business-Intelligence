@@ -1,0 +1,15 @@
+-- MDX 1
+SELECT 
+    {
+		[Measures].[Min AQI], 
+		[Measures].[Max AQI]
+	} ON COLUMNS,
+    NONEMPTY(
+        CROSSJOIN(
+            [Dim Date].[Year].[Year].Members,
+            [Dim Date].[Quarter].[Quarter].Members,
+            [Dim County].[State].[State].Members
+        ),
+        {[Measures].[Min AQI], [Measures].[Max AQI]} 
+    ) ON ROWS
+FROM [AQI_Cube];

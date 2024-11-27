@@ -1,0 +1,33 @@
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Date Hierarchy].[Date], 
+			EXISTING [Dim County].[Geography Hierarchy].[County]
+		),
+		[Measures].[AQI]
+    )
+MEMBER [Measures].[STD AQI] AS
+	STDEV(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Date Hierarchy].[Date], 
+			EXISTING [Dim County].[Geography Hierarchy].[County]
+		),
+		[Measures].[AQI]
+    )
+SELECT 
+	NON EMPTY
+    CROSSJOIN(
+      (
+        [Dim Date].[Date Hierarchy].[Year], 
+        [Dim Date].[Quarter].[Quarter]
+      ),
+      {
+        [Measures].[State Mean AQI],
+        [Measures].[STD AQI]
+      }
+    ) ON COLUMNS,
+	NON EMPTY 
+	[Dim County].[Geography Hierarchy].[State]
+	ON ROWS
+FROM [AQI_Cube]

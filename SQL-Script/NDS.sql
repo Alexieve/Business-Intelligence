@@ -52,6 +52,13 @@ CREATE TABLE County_NDS(
 	CONSTRAINT U_County_NDS_2 UNIQUE(source_id, state_SK, county_code)
 );
 
+CREATE TABLE Parameter_NDS(
+	parameter_SK int IDENTITY(1,1),
+	parameter_name varchar(50) NOT NULL,
+	created_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL,
+	CONSTRAINT PK_Parameter_NDS PRIMARY KEY CLUSTERED (parameter_SK)
+);
 
 CREATE TABLE AQI_Category_NDS(
 	category_SK int IDENTITY(1,1),
@@ -70,7 +77,7 @@ CREATE TABLE Monitor_NDS(
 	date date NOT NULL,
 	county_SK int NOT NULL,
 	site_code int NOT NULL,
-	defining_parameter varchar(50) NOT NULL,
+	parameter_SK INT NOT NULL,
 	aqi int NOT NULL,
 	category_SK int NOT NULL,
 	number_of_sites_reporting int NOT NULL,
@@ -81,6 +88,8 @@ CREATE TABLE Monitor_NDS(
 		REFERENCES Source_DB(sor_sk),
 	CONSTRAINT FK_Monitor_NDS__County_NDS FOREIGN KEY (county_SK) 
 		REFERENCES County_NDS(county_SK),
+	CONSTRAINT FK_Monitor_NDS__Parameter_NDS FOREIGN KEY (parameter_SK) 
+		REFERENCES Parameter_NDS(parameter_SK),
 	CONSTRAINT FK_Monitor_NDS__AQI_Category_NDS FOREIGN KEY (category_SK) 
 		REFERENCES AQI_Category_NDS(category_SK),
 	CONSTRAINT U_Monitor_NDS_1 UNIQUE(source_id, date, county_SK, site_code)
@@ -90,6 +99,13 @@ CREATE TABLE Monitor_NDS(
 
 -- Insert DEFAULT Source_DB
 INSERT INTO Source_DB (sor_name) VALUES('Default');
+
+-- Insert into Parameter_NDS
+INSERT INTO Parameter_NDS VALUES('Ozone', GETDATE(), GETDATE())
+INSERT INTO Parameter_NDS VALUES('PM2.5', GETDATE(), GETDATE())
+INSERT INTO Parameter_NDS VALUES('PM10', GETDATE(), GETDATE())
+INSERT INTO Parameter_NDS VALUES('NO2', GETDATE(), GETDATE())
+INSERT INTO Parameter_NDS VALUES('CO', GETDATE(), GETDATE())
 
 -- Insert into AQI_Category_NDS
 INSERT INTO AQI_Category_NDS VALUES('Good', 0, 50, 'Air quality is satisfactory, and air pollution poses little or no risk.', GETDATE(), GETDATE())

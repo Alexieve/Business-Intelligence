@@ -15,7 +15,7 @@ GO
 
 CREATE TABLE Dim_Date (
 	 date_SK                      INT          NOT NULL, 
-	 full_date                    DATETIME     NOT NULL,
+	 full_date                    DATE     NOT NULL,
 	 year_number				  INT          NOT NULL,
 	 quarter_number				  TINYINT      NOT NULL,
 	 quarter_name				  VARCHAR (6)  NOT NULL,
@@ -36,8 +36,26 @@ CREATE TABLE Dim_County (
     state_name VARCHAR(50),
 	county_name VARCHAR(50),
 	status BIT,
-	created_date DATETIME,
-	last_updated DATETIME,
+	created_date datetime2(7),
+	last_updated datetime2(7),
+);
+
+CREATE TABLE Dim_Parameter(
+	parameter_SK INT PRIMARY KEY CLUSTERED,
+	parameter_name varchar(50) NOT NULL,
+	created_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL
+);
+
+CREATE TABLE Dim_AQI_Category (
+	category_SK INT PRIMARY KEY CLUSTERED,
+	category_name varchar(50) NOT NULL,
+	aqi_min_value int NOT NULL,
+	aqi_max_value int NOT NULL,
+	description varchar(255) NOT NULL,
+	status BIT,
+	created_date datetime2(7) NOT NULL,
+	last_updated datetime2(7) NOT NULL
 );
 
 CREATE TABLE Fact_AQI_Monitor (
@@ -45,16 +63,20 @@ CREATE TABLE Fact_AQI_Monitor (
 	date_SK INT,
 	county_SK INT, 
 	site_code_DD INT,
-	defining_parameter VARCHAR(50),
+	parameter_SK INT,
 	aqi INT,
-	category_name VARCHAR(50),
+	category_SK INT,
 	number_of_sites_reporting INT,
-	created_date DATETIME,
-	last_updated DATETIME,
+	created_date datetime2(7),
+	last_updated datetime2(7),
 	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Date FOREIGN KEY (date_SK) 
 		REFERENCES Dim_Date(date_SK),
 	CONSTRAINT FK_Fact_AQI_Monitor__Dim_County FOREIGN KEY (county_SK) 
-		REFERENCES Dim_County(county_SK)
+		REFERENCES Dim_County(county_SK),
+	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Parameter FOREIGN KEY (parameter_SK) 
+		REFERENCES Dim_Parameter(parameter_SK),
+	CONSTRAINT FK_Fact_AQI_Monitor__Dim_Category FOREIGN KEY (category_SK) 
+		REFERENCES Dim_AQI_Category(category_SK)
 )
 
  
@@ -116,7 +138,7 @@ PRINT CONVERT (VARCHAR, GETDATE(), 113); --USED FOR CHECKING RUN TIME.
 
  
 
---DimDate indexes———————————————————————————————
+--DimDate indexes——————————————————————————————E
 CREATE UNIQUE NONCLUSTERED INDEX [IDX_DimDate_Date]
 ON Dim_Date(full_date ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90)
 ON [PRIMARY];

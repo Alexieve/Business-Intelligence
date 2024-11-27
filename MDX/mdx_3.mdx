@@ -1,0 +1,23 @@
+WITH 
+MEMBER [Measures].[County Mean AQI] AS
+    AVG(
+		EXISTING [Dim Date].[Date Hierarchy].[Date], 
+		[Measures].[AQI]
+    )
+SELECT
+	NON EMPTY 
+	{
+		[Measures].[Date Distinct Count],
+		[Measures].[Mean AQI]
+	} ON COLUMNS,
+	NON EMPTY 
+	(
+		[Dim County].[Geography Hierarchy].[State],
+		[Dim County].[County].[County]
+	) ON ROWS
+FROM [AQI_Cube]
+WHERE 
+	{
+		[Dim AQI Category].[Category Name].&[Very Unhealthy],
+		[Dim AQI Category].[Category Name].&[Hazardous]
+	};
