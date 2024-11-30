@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Source-To-Stage"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{3458D4B6-7CE0-43DB-9013-223EF2B71DCA}">
+  DTS:VersionBuild="84"
+  DTS:VersionGUID="{A67D8DC1-A6D9-4D88-874A-5F1E34EE8E57}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1460,7 +1460,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of state_aqi"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1485,7 +1485,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Select LSET, CET of uscounties"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1510,7 +1510,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for state_aqi"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1527,7 +1527,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET for uscounties"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1544,12 +1544,12 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for state_aqi"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A77F293-8E6E-462D-AD56-27F3419EBF4E}"
-          SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = GETDATE() WHERE TABLE_NAME = 'state_aqi'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = CET WHERE TABLE_NAME = 'state_aqi'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1561,12 +1561,12 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET for uscounties"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{6A77F293-8E6E-462D-AD56-27F3419EBF4E}"
-          SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = GETDATE() WHERE TABLE_NAME = 'uscounties'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE DATA_FLOW SET LSET = CET WHERE TABLE_NAME = 'uscounties'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1578,7 +1578,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate table state_aqi"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1595,7 +1595,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate table uscounties"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1907,13 +1907,13 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156.8,41.6"
-          Id="Package\Push state_aqi Source into Stage\state_aqi Source"
-          TopLeft="316.999995276332,73.9999988973141" />
-        <NodeLayout
           Size="151.2,41.6"
           Id="Package\Push state_aqi Source into Stage\state_aqi Stage"
           TopLeft="319.692308207789,201.298643931484" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Push state_aqi Source into Stage\state_aqi Source"
+          TopLeft="316.999995276332,73.9999988973141" />
         <EdgeLayout
           Id="Package\Push state_aqi Source into Stage.Paths[OLE DB Source Output]"
           TopLeft="395.34615174206,115.599998897314">
@@ -1945,7 +1945,7 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
     design-time-name="Package\Push uscounties Source into Stage">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158.4,41.6"
           Id="Package\Push uscounties Source into Stage\uscounties Stage"
@@ -1973,7 +1973,9 @@ OR (last_updated &gt; ? AND last_updated &lt;= ?)</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -26,18 +26,28 @@ CREATE TABLE Dim_Date (
 	 CONSTRAINT [PK_DimDate] PRIMARY KEY CLUSTERED (date_SK ASC) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
 ) ON [PRIMARY];
 
+CREATE TABLE Dim_State (
+    state_SK INT PRIMARY KEY CLUSTERED,
+    state_code_NK INT,
+	source_id INT,
+	state_id VARCHAR(5),
+    state_name VARCHAR(50),
+	status BIT,
+	created_date datetime2(7),
+	last_updated datetime2(7)
+);
+
 CREATE TABLE Dim_County (
     county_SK INT PRIMARY KEY CLUSTERED,
     state_SK INT,
 	source_id INT,
-	state_id VARCHAR(5),
-	state_code INT,
     county_code INT,
-    state_name VARCHAR(50),
 	county_name VARCHAR(50),
 	status BIT,
 	created_date datetime2(7),
 	last_updated datetime2(7),
+	CONSTRAINT FK__Dim_County__Dim_State FOREIGN KEY (state_SK) 
+		REFERENCES Dim_State(state_SK),
 );
 
 CREATE TABLE Dim_Parameter(
