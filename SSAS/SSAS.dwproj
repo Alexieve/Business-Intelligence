@@ -8,16 +8,6 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>AQI_Cube_Test.cube</Name>
-      <FullPath>AQI_Cube_Test.cube</FullPath>
-      <Dependencies>
-        <ProjectItem>
-          <Name>AQI_Cube_Test.partitions</Name>
-          <FullPath>AQI_Cube_Test.partitions</FullPath>
-        </ProjectItem>
-      </Dependencies>
-    </ProjectItem>
-    <ProjectItem>
       <Name>AQI_Cube.cube</Name>
       <FullPath>AQI_Cube.cube</FullPath>
       <Dependencies>
