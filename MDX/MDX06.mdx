@@ -1,0 +1,45 @@
+WITH 
+-- Mean AQI for each state during each time period
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+        CROSSJOIN(
+            EXISTING [Dim Date].[Hierarchy].[Date], 
+            EXISTING [Dim County].[Hierarchy].[County]
+        ),
+        [Measures].[Mean AQI]
+    )
+
+-- Standard Deviation of AQI for each state
+MEMBER [Measures].[STD AQI] AS
+    STDEV(
+        CROSSJOIN(
+            EXISTING [Dim Date].[Hierarchy].[Date], 
+            EXISTING [Dim County].[Hierarchy].[County]
+        ),
+        [Measures].[Mean AQI]
+    )
+
+SELECT 
+-- Columns: Report Mean AQI, STD AQI, Min AQI, and Max AQI
+    {
+        [Measures].[State Mean AQI], 
+        [Measures].[STD AQI], 
+        [Measures].[Min AQI], 
+        [Measures].[Max AQI]
+    } ON COLUMNS,
+
+-- Rows: Combination of Year, Quarter, and State
+    NONEMPTY(
+        CROSSJOIN(
+            [Dim Date].[Year].[Year].Members,
+            [Dim Date].[Month].[Month].Members,
+            {
+                [Dim County].[State].[Hawaii], 
+                [Dim County].[State].[Alaska], 
+                [Dim County].[State].[Illinois], 
+                [Dim County].[State].[California]
+            }
+        )
+    ) ON ROWS
+
+FROM [AQI_Cube];
