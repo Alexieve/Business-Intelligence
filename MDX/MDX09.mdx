@@ -1,0 +1,42 @@
+-- MDX 9: Report the mean, the standard deviation, min and max of AQI value group by State and County during each quarter of the year.
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+MEMBER [Measures].[STD AQI] AS
+	STDEV(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+SELECT 
+	NON EMPTY
+    {
+		[Measures].[State Mean AQI],
+		[Measures].[STD AQI],
+		[Measures].[Min AQI],
+		[Measures].[Max AQI]
+    } ON COLUMNS,
+	NON EMPTY
+    FILTER(
+        CROSSJOIN(
+		    (
+			    [Dim Date].[Hierarchy].[Year], 
+			    [Dim Date].[Quarter].[Quarter]
+		    ),
+            (
+			    [Dim County].[Hierarchy].[State],
+			    [Dim County].[County].[County]
+		    )
+        ),
+        NOT ISEMPTY([Measures].[State Mean AQI]) 
+        AND [Measures].[STD AQI] >= 0
+    ) ON ROWS
+FROM [AQI_Cube]
