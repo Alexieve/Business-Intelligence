@@ -1,39 +1,4 @@
 -- MDX 2: Report the mean and the standard deviation of AQI value for each State during each quarter of years
-WITH 
-MEMBER [Measures].[State Mean AQI] AS
-    AVG(
-		CROSSJOIN (
-			EXISTING [Dim Date].[Hierarchy].[Date], 
-			EXISTING [Dim County].[Hierarchy].[County]
-		),
-		[Measures].[Mean AQI]
-    )
-MEMBER [Measures].[STD AQI] AS
-	STDEV(
-		CROSSJOIN (
-			EXISTING [Dim Date].[Hierarchy].[Date], 
-			EXISTING [Dim County].[Hierarchy].[County]
-		),
-		[Measures].[Mean AQI]
-    )
-SELECT 
-	NON EMPTY
-    CROSSJOIN(
-      (
-        [Dim Date].[Hierarchy].[Year], 
-        [Dim Date].[Quarter].[Quarter]
-      ),
-      {
-        [Measures].[State Mean AQI],
-        [Measures].[STD AQI]
-      }
-    ) ON COLUMNS,
-	NON EMPTY
-	[Dim County].[Hierarchy].[State]
-	ON ROWS
-FROM [AQI_Cube]
-
--- MDX 2: Report the mean and the standard deviation of AQI value for each State during each quarter of years
 //WITH 
 //MEMBER [Measures].[State Mean AQI] AS
 //    AVG(
@@ -53,16 +18,56 @@ FROM [AQI_Cube]
 //    )
 //SELECT 
 //	NON EMPTY
-//    {
-//		[Measures].[State Mean AQI],
-//		[Measures].[STD AQI]
-//    } ON COLUMNS,
-//	NON EMPTY
+//	FILTER(
 //    CROSSJOIN(
-//		(
-//			[Dim Date].[Hierarchy].[Year], 
-//			[Dim Date].[Quarter].[Quarter]
-//		),
-//        [Dim County].[Hierarchy].[State]
-//    ) ON ROWS
+//      (
+//        [Dim Date].[Hierarchy].[Year], 
+//        [Dim Date].[Quarter].[Quarter]
+//      ),
+//      {
+//        [Measures].[State Mean AQI],
+//        [Measures].[STD AQI]
+//      }
+//    ) ON COLUMNS,
+//	NON EMPTY
+//	[Dim County].[Hierarchy].[State]
+//	ON ROWS
 //FROM [AQI_Cube]
+
+-- MDX 2: Report the mean and the standard deviation of AQI value for each State during each quarter of years
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+MEMBER [Measures].[STD AQI] AS
+	STDEV(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+SELECT 
+	NON EMPTY
+    {
+		[Measures].[State Mean AQI],
+		[Measures].[STD AQI]
+    } ON COLUMNS,
+	NON EMPTY
+	FILTER(
+		CROSSJOIN(
+			(
+				[Dim Date].[Hierarchy].[Year], 
+				[Dim Date].[Quarter].[Quarter]
+			),
+			[Dim County].[Hierarchy].[State]
+		),
+		NOT ISEMPTY([Measures].[State Mean AQI]) 
+        AND [Measures].[STD AQI] >= 0
+	) ON ROWS
+FROM [AQI_Cube]

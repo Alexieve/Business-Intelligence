@@ -1,0 +1,35 @@
+-- MDX 07
+//WITH 
+//MEMBER [Measures].[State Mean AQI] AS
+//    AVG(
+//		CROSSJOIN (
+//			EXISTING [Dim Date].[Hierarchy].[Date], 
+//			EXISTING [Dim County].[Hierarchy].[County]
+//		),
+//		[Measures].[Mean AQI]
+//    )
+//SELECT 
+//    [Measures].[State Mean AQI] ON COLUMNS,
+//    CROSSJOIN(
+//        [Dim County].[State Name].[State Name],
+//        [Dim Date].[Year].[Year], 
+//        [Dim Date].[Hierarchy].[Month]
+//    ) ON ROWS
+//FROM [AQI_Cube]
+
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+SELECT 
+    [Measures].[State Mean AQI] ON COLUMNS,
+    CROSSJOIN(
+        [Dim County].[State Name].[State Name], 
+        [Dim Date].[Year].[Year]
+    ) ON ROWS
+FROM [AQI_Cube]

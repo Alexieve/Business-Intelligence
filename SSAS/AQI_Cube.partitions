@@ -1,17 +1,17 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="889404f9-28e8-4ffa-a970-4653e5181d96" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="0fbf985a-6e46-4497-8b48-95258f59a9fc" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>AQI_Cube</ID>
   <MeasureGroups>
     <MeasureGroup>
       <ID>Fact AQI Monitor</ID>
       <Partitions>
-        <Partition dwd:design-time-name="e897ce98-b136-461a-b8b6-631a161afa51">
+        <Partition dwd:design-time-name="9d600c21-bc51-42e7-8ea4-df21d4a2e36f">
           <ID>Fact AQI Monitor</ID>
           <Name>Fact AQI Monitor</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="00947c2d-6266-409e-aee4-00dddcea2bc1">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="f5aaf0dd-898d-4ed4-9b12-550be708a6ed">
             <DataSourceViewID>Air Pollution DDS</DataSourceViewID>
             <TableID>dbo_Fact_AQI_Monitor</TableID>
           </Source>
@@ -24,14 +24,14 @@
     <MeasureGroup>
       <ID>Fact AQI Monitor 1</ID>
       <Partitions>
-        <Partition dwd:design-time-name="0b0ce78a-cc58-422b-a571-c69cea383a27">
+        <Partition dwd:design-time-name="6f046d3c-4146-43db-89bf-d0aa9fdfb802">
           <ID>Fact AQI Monitor</ID>
           <Name>Fact AQI Monitor</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="6371ee2d-fafc-451a-8f4b-9e4a0a355d0f">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="409b951e-c820-47a4-841b-861055bf2bad">
             <DataSourceViewID>Air Pollution DDS</DataSourceViewID>
             <TableID>dbo_Fact_AQI_Monitor</TableID>
           </Source>

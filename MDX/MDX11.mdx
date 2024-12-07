@@ -1,0 +1,37 @@
+-- MDX 11: Count the number of days by State, Category in each month
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+MEMBER [Measures].[State AQI Category] AS
+    CASE 
+        WHEN [Measures].[State Mean AQI] <= 50 THEN "Good"
+        WHEN [Measures].[State Mean AQI] <= 100 THEN "Moderate"
+        WHEN [Measures].[State Mean AQI] <= 150 THEN "Unhealthy for Sensitive Group"
+        WHEN [Measures].[State Mean AQI] <= 200 THEN "Unhealthy"
+        WHEN [Measures].[State Mean AQI] <= 300 THEN "Very Unhealthy"
+        ELSE "Hazardous"
+    END
+SELECT 
+	NON EMPTY
+    {
+		[Measures].[State AQI Category]
+    } ON COLUMNS,
+	NON EMPTY
+	FILTER(
+		CROSSJOIN(
+			(
+				[Dim Date].[Hierarchy].[Year], 
+				[Dim Date].[Quarter].[Quarter],
+				[Dim Date].[Date].[Date]
+			),
+			[Dim County].[Hierarchy].[State]
+		),
+		NOT ISEMPTY([Measures].[State Mean AQI]) 
+	) ON ROWS
+FROM [AQI_Cube]

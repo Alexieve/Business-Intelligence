@@ -1,0 +1,20 @@
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+		CROSSJOIN (
+			EXISTING [Dim Date].[Hierarchy].[Date], 
+			EXISTING [Dim County].[Hierarchy].[County]
+		),
+		[Measures].[Mean AQI]
+    )
+SELECT 
+    [Measures].[State Mean AQI] ON COLUMNS,
+    CROSSJOIN(
+        {[Dim County].[State Name].[Hawaii], 
+         [Dim County].[State Name].[Alaska], 
+         [Dim County].[State Name].[Illinois], 
+         [Dim County].[State Name].[Delaware]},
+        [Dim Date].[Year].[Year], 
+        [Dim Date].[Hierarchy].[Quarter]
+    ) ON ROWS
+FROM [AQI_Cube]
