@@ -22,6 +22,21 @@ WHERE F.category_SK > 4
 GROUP BY DS.state_name, DC.county_name
 ORDER BY DS.state_name, DC.county_name;
 
+-- MDX 5
+SELECT DS.state_name, DD.year_number, DD.quarter_number, AVG(fact.aqi) as AVG_AQI FROM Fact_AQI_Monitor Fact
+JOIN Dim_Date DD ON DD.date_SK = Fact.date_SK
+JOIN Dim_County DC ON DC.county_SK = Fact.county_SK
+JOIN Dim_State DS ON DC.state_SK = DS.state_SK
+WHERE DS.state_name IN ('Hawaii', 'Alaska', 'Illinois', 'Delaware')
+GROUP BY DS.state_name, DD.year_number, DD.quarter_number
+
+-- MDX 7
+SELECT DS.state_name, DD.year_number, DD.month_number, AVG(fact.aqi) as AVG_AQI FROM Fact_AQI_Monitor Fact
+JOIN Dim_Date DD ON DD.date_SK = Fact.date_SK
+JOIN Dim_County DC ON DC.county_SK = Fact.county_SK
+JOIN Dim_State DS ON DC.state_SK = DS.state_SK
+GROUP BY DS.state_name, DD.year_number, DD.month_number
+
 -- MDX 9
 SELECT 
 	DD.year_number, 
