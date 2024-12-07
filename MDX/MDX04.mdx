@@ -1,0 +1,16 @@
+--MDX 4: For the four following states: Hawaii, Alaska, Illinois and Delaware, count the number of days in each air quality Category (Good, Moderate,etc.) by County.
+
+SELECT 
+    [Measures].[Date Distinct Count] ON COLUMNS,
+    NONEMPTY(
+        CROSSJOIN(
+             [Dim County].[Hierarchy].[State], 
+             [Dim County].[County].[County],
+             [Dim AQI Category].[Category].[Category]
+        )
+    ) ON ROWS
+FROM [AQI_Cube]
+WHERE {[Dim County].[State].[Alaska], 
+	   [Dim County].[State].[Delaware], 
+       [Dim County].[State].[Hawaii], 
+       [Dim County].[State].[Illinois]}
