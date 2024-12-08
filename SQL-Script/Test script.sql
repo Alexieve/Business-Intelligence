@@ -17,3 +17,6 @@ SELECT * FROM AirPollution_DDS.DBO.Dim_Parameter;
 SELECT * FROM AirPollution_DDS.DBO.Dim_State;
 SELECT * FROM AirPollution_DDS.DBO.Dim_County;
 SELECT * FROM AirPollution_DDS.DBO.Fact_AQI_Monitor;
+
+SELECT * FROM V_Data_Mining
+ORDER BY full_date, aqi;
