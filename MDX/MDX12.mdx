@@ -1,29 +1,11 @@
-//Report the number of days by Category and Defining Parameter
-WITH 
-MEMBER [Measures].[America Mean AQI] AS 
-  AVG(
-	CROSSJOIN (
-			EXISTING [Dim Date].[Hierarchy].[Date], 
-			EXISTING [Dim County].[Hierarchy].[County].MEMBERS
-		),
-    [Measures].[Mean AQI]
-  )
-MEMBER [Measures].[America AQI Category] AS
-    CASE 
-        WHEN [Measures].[America Mean AQI] <= 50 THEN "Good"
-        WHEN [Measures].[America Mean AQI] <= 100 THEN "Moderate"
-        WHEN [Measures].[America Mean AQI] <= 150 THEN "Unhealthy for Sensitive Group"
-        WHEN [Measures].[America Mean AQI] <= 200 THEN "Unhealthy"
-        WHEN [Measures].[America Mean AQI] <= 300 THEN "Very Unhealthy"
-        ELSE "Hazardous"
-    END
-SELECT 
-  { [Measures].[America Mean AQI], 
-	[Measures].[America AQI Category]} ON COLUMNS,
-  CROSSJOIN 
-	(
-		[Dim Date].[Hierarchy].[Date], 
-		[Dim County].[Hierarchy]
-	) ON ROWS
-FROM 
-  [AQI_Cube]
+//MDX 12: Report the number of days by Category and Defining Parameter
+
+SELECT
+    [Measures].[Date Distinct Count] ON COLUMNS,
+    NON EMPTY CROSSJOIN (
+        [Dim AQI Category].[Category].[Category],
+        [Dim Parameter].[Parameter].[Parameter]
+    ) ON ROWS
+FROM [AQI_Cube]
+
+
