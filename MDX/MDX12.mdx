@@ -1,0 +1,11 @@
+//MDX 12: Report the number of days by Category and Defining Parameter
+
+SELECT
+    [Measures].[Date Distinct Count] ON COLUMNS,
+    NON EMPTY CROSSJOIN (
+        [Dim AQI Category].[Category].[Category],
+        [Dim Parameter].[Parameter].[Parameter]
+    ) ON ROWS
+FROM [AQI_Cube]
+
+
