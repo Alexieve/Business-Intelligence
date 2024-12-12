@@ -1,0 +1,26 @@
+WITH 
+MEMBER [Measures].[State Mean AQI] AS
+    AVG(
+        CROSSJOIN (
+            EXISTING [Dim Date].[Hierarchy].[Date], 
+            EXISTING [Dim County].[Hierarchy].[County]
+        ),
+        [Measures].[Mean AQI]
+    )
+
+SELECT 
+    NON EMPTY
+    CROSSJOIN(
+      (
+        [Dim Date].[Year].&[2023],
+        [Dim Date].[Day Light Saving].[Day Light Saving].Members,
+		[Dim AQI Category].[Category].[Category].Members
+      ),
+      {
+        [Measures].[State Mean AQI]
+      }
+    ) ON COLUMNS,
+    NON EMPTY
+    [Dim County].[Hierarchy].[State]
+    ON ROWS
+FROM [AQI_Cube]
