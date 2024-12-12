@@ -1,10 +1,4 @@
 -- MDX 3: Report the number of days, and the mean AQI value where the air quality is rated as "very unhealthy" or worse for each State and County
-WITH 
-MEMBER [Measures].[County Mean AQI] AS
-    AVG(
-		EXISTING [Dim Date].[Hierarchy].[Date], 
-		[Measures].[AQI]
-    )
 SELECT
 	NON EMPTY 
 	{
